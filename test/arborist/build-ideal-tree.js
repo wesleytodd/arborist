@@ -513,7 +513,7 @@ t.test('contrived dep placement tests', t => {
       // |   +-- c@1
       // +-- c@1.1
       // when we place the c@1.1 dep on behalf of b and end up in root.
-      const dedupeUpdate = new Node({
+      const dedupeUpdate = a.idealTree = new Node({
         name: 'root',
         path: '/some/path',
         pkg: { name: 'root', dependencies: { b: '' } },
@@ -541,6 +541,108 @@ t.test('contrived dep placement tests', t => {
       t.equal(edge.to, c11, 'b is resolved by c 1.1')
       t.equal(edge.valid, true, 'b is happy about this')
       t.equal(b.children.size, 0, 'b has no direct children now')
+      t.end()
+    })
+
+    t.test('update replacing with better node, keep needed dupe', t => {
+      const a = new Arborist()
+      // root (a, d, d*)
+      // +-- a (b, c2)
+      // |   +-- b (c2) <-- place c2 for b, lands at root
+      // +-- d (e)
+      //     +-- e (c1, d)
+      //         +-- c1
+      //         +-- f (c2)
+      //             +-- c2 <-- pruning this would be bad
+      const root = a.idealTree = new Node({
+        name: 'root',
+        path: '/some/path',
+        pkg: {
+          name: 'root',
+          dependencies: {
+            a: '',
+            d: '',
+          },
+        },
+        children: [
+          {
+            name: 'a',
+            pkg: {
+              name: 'a',
+              version: '1.2.3',
+              dependencies: { b: '', c: '2' },
+            },
+            children: [
+              {
+                name: 'b',
+                pkg: {
+                  name: 'b',
+                  version: '1.2.3',
+                  dependencies: { c: '2' },
+                },
+              },
+            ],
+          },
+          {
+            name: 'd',
+            pkg: {
+              name: 'd',
+              version: '1.2.3',
+              dependencies: { e: '' },
+            },
+            children: [
+              {
+                name: 'e',
+                pkg: { name: 'e', dependencies: {
+                  c: '1',
+                  f: '',
+                }},
+                children: [
+                  { name: 'c', pkg: { name: 'c', version: '1.2.3' } },
+                  {
+                    name: 'f',
+                    pkg: {
+                      name: 'f',
+                      dependencies: { c: '2' },
+                    },
+                    children: [
+                      {
+                        name: 'c',
+                        pkg: {
+                          name: 'c',
+                          version: '2.3.4',
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      })
+
+      const c2 = new Node({
+        name: 'c',
+        pkg: { name: 'c', version: '2.3.4' },
+        parent: new Node({ path: '/virtual/root' }),
+      })
+
+      const d = root.children.get('d')
+      t.ok(d, 'have d node')
+
+      const e = d.children.get('e')
+      t.ok(e, 'have e node')
+
+      const oldc = e.children.get('c')
+      const f = e.children.get('f')
+      const dupe = f.children.get('c')
+      const b = root.children.get('a').children.get('b')
+      const edge = b.edgesOut.get('c')
+      a.placeIdealDep(c2, b, edge)
+      t.equal(c2.parent, root, 'new node landed at the root')
+      t.equal(oldc.parent, e, 'old c still in the tree')
+      t.equal(dupe.parent, f, 'dupe still in tree')
       t.end()
     })
 

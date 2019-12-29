@@ -5,7 +5,7 @@
  * Make sure to inspect the output below.  Do not ignore changes!
  */
 'use strict'
-exports[`test/arborist/build-ideal-tree.js TAP bad shrinkwrap file > bad shrinkwrap 1`] = `
+exports[`test/arborist/reify.js TAP bad shrinkwrap file > bad shrinkwrap 1`] = `
 Node {
   "children": Map {
     "@isaacs/testing-peer-deps-b" => Node {
@@ -136,1141 +136,998 @@ Node {
     },
   },
   "location": "",
-  "name": "testing-peer-deps-bad-sw",
+  "name": "reify-bad-shrinkwrap-file",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP bundle deps example 1 > bundle deps testing 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/testing-bundledeps" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/testing-bundledeps",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/testing-bundledeps-a" => Edge {
-          "error": "MISSING",
-          "name": "@isaacs/testing-bundledeps-a",
-          "spec": "*",
-          "to": null,
-          "type": "prod",
-        },
-        "@isaacs/testing-bundledeps-c" => Edge {
-          "name": "@isaacs/testing-bundledeps-c",
-          "spec": "*",
-          "to": "node_modules/@isaacs/testing-bundledeps-c",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps",
-      "name": "@isaacs/testing-bundledeps",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps/-/testing-bundledeps-1.0.0.tgz",
-    },
-    "@isaacs/testing-bundledeps-b" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/testing-bundledeps-c",
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-b",
-      "name": "@isaacs/testing-bundledeps-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-b/-/testing-bundledeps-b-1.0.0.tgz",
-    },
-    "@isaacs/testing-bundledeps-c" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/testing-bundledeps",
-          "name": "@isaacs/testing-bundledeps-c",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/testing-bundledeps-b" => Edge {
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "to": "node_modules/@isaacs/testing-bundledeps-b",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-c",
-      "name": "@isaacs/testing-bundledeps-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-c/-/testing-bundledeps-c-1.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/testing-bundledeps" => Edge {
-      "name": "@isaacs/testing-bundledeps",
-      "spec": "*",
-      "to": "node_modules/@isaacs/testing-bundledeps",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "testing-bundledeps",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP bundle deps example 1 > bundle the bundler 1`] = `
+exports[`test/arborist/reify.js TAP bundle deps example 1 bundle the bundler > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/testing-bundledeps" => Node {
       "bundled": true,
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/testing-bundledeps",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/testing-bundledeps-a" => Edge {
-          "error": "MISSING",
-          "name": "@isaacs/testing-bundledeps-a",
-          "spec": "*",
-          "to": null,
-          "type": "prod",
-        },
-        "@isaacs/testing-bundledeps-c" => Edge {
-          "name": "@isaacs/testing-bundledeps-c",
-          "spec": "*",
-          "to": "node_modules/@isaacs/testing-bundledeps-c",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps",
-      "name": "@isaacs/testing-bundledeps",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps/-/testing-bundledeps-1.0.0.tgz",
-    },
-    "@isaacs/testing-bundledeps-b" => Node {
-      "bundled": true,
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/testing-bundledeps-c",
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-b",
-      "name": "@isaacs/testing-bundledeps-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-b/-/testing-bundledeps-b-1.0.0.tgz",
-    },
-    "@isaacs/testing-bundledeps-c" => Node {
-      "bundled": true,
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/testing-bundledeps",
-          "name": "@isaacs/testing-bundledeps-c",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/testing-bundledeps-b" => Edge {
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "to": "node_modules/@isaacs/testing-bundledeps-b",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-c",
-      "name": "@isaacs/testing-bundledeps-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-c/-/testing-bundledeps-c-1.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/testing-bundledeps" => Edge {
-      "name": "@isaacs/testing-bundledeps",
-      "spec": "*",
-      "to": "node_modules/@isaacs/testing-bundledeps",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "testing-bundledeps",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP bundle deps example 2 > add new bundled dep c 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/testing-bundledeps-a" => Node {
-      "bundled": true,
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/testing-bundledeps-a",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/testing-bundledeps-b" => Edge {
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "to": "node_modules/@isaacs/testing-bundledeps-b",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-a",
-      "name": "@isaacs/testing-bundledeps-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-a/-/testing-bundledeps-a-1.0.0.tgz",
-    },
-    "@isaacs/testing-bundledeps-b" => Node {
-      "bundled": true,
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/testing-bundledeps-a",
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/@isaacs/testing-bundledeps-c",
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-b",
-      "name": "@isaacs/testing-bundledeps-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-b/-/testing-bundledeps-b-1.0.0.tgz",
-    },
-    "@isaacs/testing-bundledeps-c" => Node {
-      "bundled": true,
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/testing-bundledeps-c",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/testing-bundledeps-b" => Edge {
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "to": "node_modules/@isaacs/testing-bundledeps-b",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-c",
-      "name": "@isaacs/testing-bundledeps-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-c/-/testing-bundledeps-c-1.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/testing-bundledeps-a" => Edge {
-      "name": "@isaacs/testing-bundledeps-a",
-      "spec": "*",
-      "to": "node_modules/@isaacs/testing-bundledeps-a",
-      "type": "prod",
-    },
-    "@isaacs/testing-bundledeps-c" => Edge {
-      "name": "@isaacs/testing-bundledeps-c",
-      "spec": "*",
-      "to": "node_modules/@isaacs/testing-bundledeps-c",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "testing-bundledeps-2",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP bundle deps example 2 > bundle deps testing 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/testing-bundledeps-a" => Node {
-      "bundled": true,
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/testing-bundledeps-a",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/testing-bundledeps-b" => Edge {
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "to": "node_modules/@isaacs/testing-bundledeps-b",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-a",
-      "name": "@isaacs/testing-bundledeps-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-a/-/testing-bundledeps-a-1.0.0.tgz",
-    },
-    "@isaacs/testing-bundledeps-b" => Node {
-      "bundled": true,
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/testing-bundledeps-a",
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/@isaacs/testing-bundledeps-c",
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-b",
-      "name": "@isaacs/testing-bundledeps-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-b/-/testing-bundledeps-b-1.0.0.tgz",
-    },
-    "@isaacs/testing-bundledeps-c" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/testing-bundledeps-c",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/testing-bundledeps-b" => Edge {
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "to": "node_modules/@isaacs/testing-bundledeps-b",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-c",
-      "name": "@isaacs/testing-bundledeps-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-c/-/testing-bundledeps-c-1.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/testing-bundledeps-a" => Edge {
-      "name": "@isaacs/testing-bundledeps-a",
-      "spec": "*",
-      "to": "node_modules/@isaacs/testing-bundledeps-a",
-      "type": "prod",
-    },
-    "@isaacs/testing-bundledeps-c" => Edge {
-      "name": "@isaacs/testing-bundledeps-c",
-      "spec": "*",
-      "to": "node_modules/@isaacs/testing-bundledeps-c",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "testing-bundledeps-2",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP bundle deps example 2 > remove bundled dependency a 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/testing-bundledeps-b" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/testing-bundledeps-c",
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-b",
-      "name": "@isaacs/testing-bundledeps-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-b/-/testing-bundledeps-b-1.0.0.tgz",
-    },
-    "@isaacs/testing-bundledeps-c" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/testing-bundledeps-c",
-          "spec": "*",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/testing-bundledeps-b" => Edge {
-          "name": "@isaacs/testing-bundledeps-b",
-          "spec": "*",
-          "to": "node_modules/@isaacs/testing-bundledeps-b",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/testing-bundledeps-c",
-      "name": "@isaacs/testing-bundledeps-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-c/-/testing-bundledeps-c-1.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/testing-bundledeps-c" => Edge {
-      "name": "@isaacs/testing-bundledeps-c",
-      "spec": "*",
-      "to": "node_modules/@isaacs/testing-bundledeps-c",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "testing-bundledeps-2",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP cyclical peer deps peer-dep-cycle > can add b@2 if we remove a@1 dep 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/peer-dep-cycle-a" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-c",
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-b" => Edge {
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-b",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-a",
-      "name": "@isaacs/peer-dep-cycle-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-2.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-b" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "2.x",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-a",
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-c" => Edge {
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-c",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-b",
-      "name": "@isaacs/peer-dep-cycle-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-2.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-c" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-b",
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-a" => Edge {
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-a",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-c",
-      "name": "@isaacs/peer-dep-cycle-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-2.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/peer-dep-cycle-b" => Edge {
-      "name": "@isaacs/peer-dep-cycle-b",
-      "spec": "2.x",
-      "to": "node_modules/@isaacs/peer-dep-cycle-b",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "peer-dep-cycle",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP cyclical peer deps peer-dep-cycle > cyclical peer deps - upgrade a package 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/peer-dep-cycle-a" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "2.x",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-c",
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-b" => Edge {
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-b",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-a",
-      "name": "@isaacs/peer-dep-cycle-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-2.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-b" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-a",
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-c" => Edge {
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-c",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-b",
-      "name": "@isaacs/peer-dep-cycle-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-2.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-c" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-b",
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-a" => Edge {
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-a",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-c",
-      "name": "@isaacs/peer-dep-cycle-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-2.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/peer-dep-cycle-a" => Edge {
-      "name": "@isaacs/peer-dep-cycle-a",
-      "spec": "2.x",
-      "to": "node_modules/@isaacs/peer-dep-cycle-a",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "peer-dep-cycle",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP cyclical peer deps peer-dep-cycle > cyclical peer deps 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/peer-dep-cycle-a" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "1",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-c",
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "1",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-b" => Edge {
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "1",
-          "to": "node_modules/@isaacs/peer-dep-cycle-b",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-a",
-      "name": "@isaacs/peer-dep-cycle-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-1.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-b" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-a",
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "1",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-c" => Edge {
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "1",
-          "to": "node_modules/@isaacs/peer-dep-cycle-c",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-b",
-      "name": "@isaacs/peer-dep-cycle-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-1.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-c" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-b",
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "1",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-a" => Edge {
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "1",
-          "to": "node_modules/@isaacs/peer-dep-cycle-a",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-c",
-      "name": "@isaacs/peer-dep-cycle-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-1.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/peer-dep-cycle-a" => Edge {
-      "name": "@isaacs/peer-dep-cycle-a",
-      "spec": "1",
-      "to": "node_modules/@isaacs/peer-dep-cycle-a",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "peer-dep-cycle",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP cyclical peer deps peer-dep-cycle > remove the dep, prune everything 1`] = `
-Node {
-  "location": "",
-  "name": "peer-dep-cycle",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP cyclical peer deps peer-dep-cycle-with-sw > can add b@2 if we remove a@1 dep 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/peer-dep-cycle-a" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-c",
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-b" => Edge {
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-b",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-a",
-      "name": "@isaacs/peer-dep-cycle-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-2.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-b" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "2.x",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-a",
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-c" => Edge {
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-c",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-b",
-      "name": "@isaacs/peer-dep-cycle-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-2.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-c" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-b",
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-a" => Edge {
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-a",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-c",
-      "name": "@isaacs/peer-dep-cycle-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-2.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/peer-dep-cycle-b" => Edge {
-      "name": "@isaacs/peer-dep-cycle-b",
-      "spec": "2.x",
-      "to": "node_modules/@isaacs/peer-dep-cycle-b",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "peer-dep-cycle-with-sw",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP cyclical peer deps peer-dep-cycle-with-sw > cyclical peer deps - upgrade a package 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/peer-dep-cycle-a" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "2.x",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-c",
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-b" => Edge {
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-b",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-a",
-      "name": "@isaacs/peer-dep-cycle-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-2.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-b" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-a",
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-c" => Edge {
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-c",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-b",
-      "name": "@isaacs/peer-dep-cycle-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-2.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-c" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-b",
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "2",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-a" => Edge {
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "2",
-          "to": "node_modules/@isaacs/peer-dep-cycle-a",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-c",
-      "name": "@isaacs/peer-dep-cycle-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-2.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/peer-dep-cycle-a" => Edge {
-      "name": "@isaacs/peer-dep-cycle-a",
-      "spec": "2.x",
-      "to": "node_modules/@isaacs/peer-dep-cycle-a",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "peer-dep-cycle-with-sw",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP cyclical peer deps peer-dep-cycle-with-sw > cyclical peer deps 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/peer-dep-cycle-a" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "1",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-c",
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "1",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-b" => Edge {
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "1",
-          "to": "node_modules/@isaacs/peer-dep-cycle-b",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-a",
-      "name": "@isaacs/peer-dep-cycle-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-1.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-b" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-a",
-          "name": "@isaacs/peer-dep-cycle-b",
-          "spec": "1",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-c" => Edge {
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "1",
-          "to": "node_modules/@isaacs/peer-dep-cycle-c",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-b",
-      "name": "@isaacs/peer-dep-cycle-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-1.0.0.tgz",
-    },
-    "@isaacs/peer-dep-cycle-c" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/@isaacs/peer-dep-cycle-b",
-          "name": "@isaacs/peer-dep-cycle-c",
-          "spec": "1",
-          "type": "peer",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/peer-dep-cycle-a" => Edge {
-          "name": "@isaacs/peer-dep-cycle-a",
-          "spec": "1",
-          "to": "node_modules/@isaacs/peer-dep-cycle-a",
-          "type": "peer",
-        },
-      },
-      "location": "node_modules/@isaacs/peer-dep-cycle-c",
-      "name": "@isaacs/peer-dep-cycle-c",
-      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-1.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/peer-dep-cycle-a" => Edge {
-      "name": "@isaacs/peer-dep-cycle-a",
-      "spec": "1",
-      "to": "node_modules/@isaacs/peer-dep-cycle-a",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "peer-dep-cycle-with-sw",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP cyclical peer deps peer-dep-cycle-with-sw > remove the dep, prune everything 1`] = `
-Node {
-  "location": "",
-  "name": "peer-dep-cycle-with-sw",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP dedupe example - deduped > dedupe testing 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/dedupe-tests-a" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/dedupe-tests-a",
-          "spec": "1.0.1",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/dedupe-tests-b" => Edge {
-          "name": "@isaacs/dedupe-tests-b",
-          "spec": "1",
-          "to": "node_modules/@isaacs/dedupe-tests-b",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/dedupe-tests-a",
-      "name": "@isaacs/dedupe-tests-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/dedupe-tests-a/-/dedupe-tests-a-1.0.1.tgz",
-    },
-    "@isaacs/dedupe-tests-b" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/dedupe-tests-b",
-          "spec": "1",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/@isaacs/dedupe-tests-a",
-          "name": "@isaacs/dedupe-tests-b",
-          "spec": "1",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/dedupe-tests-b",
-      "name": "@isaacs/dedupe-tests-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/dedupe-tests-b/-/dedupe-tests-b-1.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/dedupe-tests-a" => Edge {
-      "name": "@isaacs/dedupe-tests-a",
-      "spec": "1.0.1",
-      "to": "node_modules/@isaacs/dedupe-tests-a",
-      "type": "prod",
-    },
-    "@isaacs/dedupe-tests-b" => Edge {
-      "name": "@isaacs/dedupe-tests-b",
-      "spec": "1",
-      "to": "node_modules/@isaacs/dedupe-tests-b",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "dedupe-tests-2",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP dedupe example - deduped because preferDedupe=true > dedupe testing 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/dedupe-tests-a" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/dedupe-tests-a",
-          "spec": "1.0.1",
-          "type": "prod",
-        },
-      },
-      "edgesOut": Map {
-        "@isaacs/dedupe-tests-b" => Edge {
-          "name": "@isaacs/dedupe-tests-b",
-          "spec": "1",
-          "to": "node_modules/@isaacs/dedupe-tests-b",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/dedupe-tests-a",
-      "name": "@isaacs/dedupe-tests-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/dedupe-tests-a/-/dedupe-tests-a-1.0.1.tgz",
-    },
-    "@isaacs/dedupe-tests-b" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "",
-          "name": "@isaacs/dedupe-tests-b",
-          "spec": "1||2",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/@isaacs/dedupe-tests-a",
-          "name": "@isaacs/dedupe-tests-b",
-          "spec": "1",
-          "type": "prod",
-        },
-      },
-      "location": "node_modules/@isaacs/dedupe-tests-b",
-      "name": "@isaacs/dedupe-tests-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/dedupe-tests-b/-/dedupe-tests-b-1.0.0.tgz",
-    },
-  },
-  "edgesOut": Map {
-    "@isaacs/dedupe-tests-a" => Edge {
-      "name": "@isaacs/dedupe-tests-a",
-      "spec": "1.0.1",
-      "to": "node_modules/@isaacs/dedupe-tests-a",
-      "type": "prod",
-    },
-    "@isaacs/dedupe-tests-b" => Edge {
-      "name": "@isaacs/dedupe-tests-b",
-      "spec": "1||2",
-      "to": "node_modules/@isaacs/dedupe-tests-b",
-      "type": "prod",
-    },
-  },
-  "location": "",
-  "name": "dedupe-tests",
-  "resolved": null,
-}
-`
-
-exports[`test/arborist/build-ideal-tree.js TAP dedupe example - not deduped > dedupe testing 1`] = `
-Node {
-  "children": Map {
-    "@isaacs/dedupe-tests-a" => Node {
       "children": Map {
-        "@isaacs/dedupe-tests-b" => Node {
+        "@isaacs/testing-bundledeps-a" => Node {
+          "bundled": true,
           "edgesIn": Set {
             Edge {
-              "from": "node_modules/@isaacs/dedupe-tests-a",
-              "name": "@isaacs/dedupe-tests-b",
-              "spec": "1",
+              "from": "node_modules/@isaacs/testing-bundledeps",
+              "name": "@isaacs/testing-bundledeps-a",
+              "spec": "*",
               "type": "prod",
             },
           },
-          "location": "node_modules/@isaacs/dedupe-tests-a/node_modules/@isaacs/dedupe-tests-b",
-          "name": "@isaacs/dedupe-tests-b",
-          "resolved": "https://registry.npmjs.org/@isaacs/dedupe-tests-b/-/dedupe-tests-b-1.0.0.tgz",
+          "edgesOut": Map {
+            "@isaacs/testing-bundledeps-b" => Edge {
+              "name": "@isaacs/testing-bundledeps-b",
+              "spec": "*",
+              "to": "node_modules/@isaacs/testing-bundledeps-b",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/@isaacs/testing-bundledeps/node_modules/@isaacs/testing-bundledeps-a",
+          "name": "@isaacs/testing-bundledeps-a",
+          "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-a/-/testing-bundledeps-a-1.0.0.tgz",
         },
       },
       "edgesIn": Set {
         Edge {
           "from": "",
-          "name": "@isaacs/dedupe-tests-a",
-          "spec": "1.0.1",
+          "name": "@isaacs/testing-bundledeps",
+          "spec": "*",
           "type": "prod",
         },
       },
       "edgesOut": Map {
-        "@isaacs/dedupe-tests-b" => Edge {
-          "name": "@isaacs/dedupe-tests-b",
-          "spec": "1",
-          "to": "node_modules/@isaacs/dedupe-tests-a/node_modules/@isaacs/dedupe-tests-b",
+        "@isaacs/testing-bundledeps-a" => Edge {
+          "name": "@isaacs/testing-bundledeps-a",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps/node_modules/@isaacs/testing-bundledeps-a",
+          "type": "prod",
+        },
+        "@isaacs/testing-bundledeps-c" => Edge {
+          "name": "@isaacs/testing-bundledeps-c",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps-c",
           "type": "prod",
         },
       },
-      "location": "node_modules/@isaacs/dedupe-tests-a",
-      "name": "@isaacs/dedupe-tests-a",
-      "resolved": "https://registry.npmjs.org/@isaacs/dedupe-tests-a/-/dedupe-tests-a-1.0.1.tgz",
+      "location": "node_modules/@isaacs/testing-bundledeps",
+      "name": "@isaacs/testing-bundledeps",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps/-/testing-bundledeps-1.0.0.tgz",
     },
-    "@isaacs/dedupe-tests-b" => Node {
+    "@isaacs/testing-bundledeps-b" => Node {
+      "bundled": true,
       "edgesIn": Set {
         Edge {
-          "from": "",
-          "name": "@isaacs/dedupe-tests-b",
-          "spec": "1||2",
+          "from": "node_modules/@isaacs/testing-bundledeps-c",
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "type": "prod",
+        },
+        Edge {
+          "from": "node_modules/@isaacs/testing-bundledeps/node_modules/@isaacs/testing-bundledeps-a",
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
           "type": "prod",
         },
       },
-      "location": "node_modules/@isaacs/dedupe-tests-b",
-      "name": "@isaacs/dedupe-tests-b",
-      "resolved": "https://registry.npmjs.org/@isaacs/dedupe-tests-b/-/dedupe-tests-b-2.0.0.tgz",
+      "location": "node_modules/@isaacs/testing-bundledeps-b",
+      "name": "@isaacs/testing-bundledeps-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-b/-/testing-bundledeps-b-1.0.0.tgz",
+    },
+    "@isaacs/testing-bundledeps-c" => Node {
+      "bundled": true,
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/testing-bundledeps",
+          "name": "@isaacs/testing-bundledeps-c",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/testing-bundledeps-b" => Edge {
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps-b",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-c",
+      "name": "@isaacs/testing-bundledeps-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-c/-/testing-bundledeps-c-1.0.0.tgz",
     },
   },
   "edgesOut": Map {
-    "@isaacs/dedupe-tests-a" => Edge {
-      "name": "@isaacs/dedupe-tests-a",
-      "spec": "1.0.1",
-      "to": "node_modules/@isaacs/dedupe-tests-a",
-      "type": "prod",
-    },
-    "@isaacs/dedupe-tests-b" => Edge {
-      "name": "@isaacs/dedupe-tests-b",
-      "spec": "1||2",
-      "to": "node_modules/@isaacs/dedupe-tests-b",
+    "@isaacs/testing-bundledeps" => Edge {
+      "name": "@isaacs/testing-bundledeps",
+      "spec": "*",
+      "to": "node_modules/@isaacs/testing-bundledeps",
       "type": "prod",
     },
   },
   "location": "",
-  "name": "dedupe-tests",
+  "name": "reify-bundle-deps-example-1-bundle-the-bundler",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP do not add shrinkwrapped deps > expect resolving Promise 1`] = `
+exports[`test/arborist/reify.js TAP bundle deps example 1 without update > expect resolving Promise 1`] = `
+Node {
+  "children": Map {
+    "@isaacs/testing-bundledeps" => Node {
+      "children": Map {
+        "@isaacs/testing-bundledeps-a" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/@isaacs/testing-bundledeps",
+              "name": "@isaacs/testing-bundledeps-a",
+              "spec": "*",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@isaacs/testing-bundledeps-b" => Edge {
+              "name": "@isaacs/testing-bundledeps-b",
+              "spec": "*",
+              "to": "node_modules/@isaacs/testing-bundledeps-b",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/@isaacs/testing-bundledeps/node_modules/@isaacs/testing-bundledeps-a",
+          "name": "@isaacs/testing-bundledeps-a",
+          "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-a/-/testing-bundledeps-a-1.0.0.tgz",
+        },
+      },
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/testing-bundledeps",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/testing-bundledeps-a" => Edge {
+          "name": "@isaacs/testing-bundledeps-a",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps/node_modules/@isaacs/testing-bundledeps-a",
+          "type": "prod",
+        },
+        "@isaacs/testing-bundledeps-c" => Edge {
+          "name": "@isaacs/testing-bundledeps-c",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps-c",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps",
+      "name": "@isaacs/testing-bundledeps",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps/-/testing-bundledeps-1.0.0.tgz",
+    },
+    "@isaacs/testing-bundledeps-b" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/testing-bundledeps-c",
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "type": "prod",
+        },
+        Edge {
+          "from": "node_modules/@isaacs/testing-bundledeps/node_modules/@isaacs/testing-bundledeps-a",
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-b",
+      "name": "@isaacs/testing-bundledeps-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-b/-/testing-bundledeps-b-1.0.0.tgz",
+    },
+    "@isaacs/testing-bundledeps-c" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/testing-bundledeps",
+          "name": "@isaacs/testing-bundledeps-c",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/testing-bundledeps-b" => Edge {
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps-b",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-c",
+      "name": "@isaacs/testing-bundledeps-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-c/-/testing-bundledeps-c-1.0.0.tgz",
+    },
+  },
+  "edgesOut": Map {
+    "@isaacs/testing-bundledeps" => Edge {
+      "name": "@isaacs/testing-bundledeps",
+      "spec": "*",
+      "to": "node_modules/@isaacs/testing-bundledeps",
+      "type": "prod",
+    },
+  },
+  "location": "",
+  "name": "reify-bundle-deps-example-1-without-update",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP bundle deps example 2 add new bundled dep c > expect resolving Promise 1`] = `
+Node {
+  "children": Map {
+    "@isaacs/testing-bundledeps-a" => Node {
+      "bundled": true,
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/testing-bundledeps-a",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/testing-bundledeps-b" => Edge {
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps-b",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-a",
+      "name": "@isaacs/testing-bundledeps-a",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-a/-/testing-bundledeps-a-1.0.0.tgz",
+    },
+    "@isaacs/testing-bundledeps-b" => Node {
+      "bundled": true,
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/testing-bundledeps-a",
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "type": "prod",
+        },
+        Edge {
+          "from": "node_modules/@isaacs/testing-bundledeps-c",
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-b",
+      "name": "@isaacs/testing-bundledeps-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-b/-/testing-bundledeps-b-1.0.0.tgz",
+    },
+    "@isaacs/testing-bundledeps-c" => Node {
+      "bundled": true,
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/testing-bundledeps-c",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/testing-bundledeps-b" => Edge {
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps-b",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-c",
+      "name": "@isaacs/testing-bundledeps-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-c/-/testing-bundledeps-c-1.0.0.tgz",
+    },
+  },
+  "edgesOut": Map {
+    "@isaacs/testing-bundledeps-a" => Edge {
+      "name": "@isaacs/testing-bundledeps-a",
+      "spec": "*",
+      "to": "node_modules/@isaacs/testing-bundledeps-a",
+      "type": "prod",
+    },
+    "@isaacs/testing-bundledeps-c" => Edge {
+      "name": "@isaacs/testing-bundledeps-c",
+      "spec": "*",
+      "to": "node_modules/@isaacs/testing-bundledeps-c",
+      "type": "prod",
+    },
+  },
+  "location": "",
+  "name": "reify-bundle-deps-example-2-add-new-bundled-dep-c",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP bundle deps example 2 bundle deps testing > expect resolving Promise 1`] = `
+Node {
+  "children": Map {
+    "@isaacs/testing-bundledeps-a" => Node {
+      "bundled": true,
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/testing-bundledeps-a",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/testing-bundledeps-b" => Edge {
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps-b",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-a",
+      "name": "@isaacs/testing-bundledeps-a",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-a/-/testing-bundledeps-a-1.0.0.tgz",
+    },
+    "@isaacs/testing-bundledeps-b" => Node {
+      "bundled": true,
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/testing-bundledeps-a",
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "type": "prod",
+        },
+        Edge {
+          "from": "node_modules/@isaacs/testing-bundledeps-c",
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-b",
+      "name": "@isaacs/testing-bundledeps-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-b/-/testing-bundledeps-b-1.0.0.tgz",
+    },
+    "@isaacs/testing-bundledeps-c" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/testing-bundledeps-c",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/testing-bundledeps-b" => Edge {
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps-b",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-c",
+      "name": "@isaacs/testing-bundledeps-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-c/-/testing-bundledeps-c-1.0.0.tgz",
+    },
+  },
+  "edgesOut": Map {
+    "@isaacs/testing-bundledeps-a" => Edge {
+      "name": "@isaacs/testing-bundledeps-a",
+      "spec": "*",
+      "to": "node_modules/@isaacs/testing-bundledeps-a",
+      "type": "prod",
+    },
+    "@isaacs/testing-bundledeps-c" => Edge {
+      "name": "@isaacs/testing-bundledeps-c",
+      "spec": "*",
+      "to": "node_modules/@isaacs/testing-bundledeps-c",
+      "type": "prod",
+    },
+  },
+  "location": "",
+  "name": "reify-bundle-deps-example-2-bundle-deps-testing",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP bundle deps example 2 remove bundled dep a > expect resolving Promise 1`] = `
+Node {
+  "children": Map {
+    "@isaacs/testing-bundledeps-b" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/testing-bundledeps-c",
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-b",
+      "name": "@isaacs/testing-bundledeps-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-b/-/testing-bundledeps-b-1.0.0.tgz",
+    },
+    "@isaacs/testing-bundledeps-c" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/testing-bundledeps-c",
+          "spec": "*",
+          "type": "prod",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/testing-bundledeps-b" => Edge {
+          "name": "@isaacs/testing-bundledeps-b",
+          "spec": "*",
+          "to": "node_modules/@isaacs/testing-bundledeps-b",
+          "type": "prod",
+        },
+      },
+      "location": "node_modules/@isaacs/testing-bundledeps-c",
+      "name": "@isaacs/testing-bundledeps-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/testing-bundledeps-c/-/testing-bundledeps-c-1.0.0.tgz",
+    },
+  },
+  "edgesOut": Map {
+    "@isaacs/testing-bundledeps-c" => Edge {
+      "name": "@isaacs/testing-bundledeps-c",
+      "spec": "*",
+      "to": "node_modules/@isaacs/testing-bundledeps-c",
+      "type": "prod",
+    },
+  },
+  "location": "",
+  "name": "reify-bundle-deps-example-2-remove-bundled-dep-a",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP cyclical peer deps peer-dep-cycle can add b@2 if we remove a@1 dep > can add b@2 if we remove a@1 dep 1`] = `
+Node {
+  "children": Map {
+    "@isaacs/peer-dep-cycle-a" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-c",
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-b" => Edge {
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-b",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-a",
+      "name": "@isaacs/peer-dep-cycle-a",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-2.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-b" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "2.x",
+          "type": "prod",
+        },
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-a",
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-c" => Edge {
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-c",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-b",
+      "name": "@isaacs/peer-dep-cycle-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-2.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-c" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-b",
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-a" => Edge {
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-a",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-c",
+      "name": "@isaacs/peer-dep-cycle-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-2.0.0.tgz",
+    },
+  },
+  "edgesOut": Map {
+    "@isaacs/peer-dep-cycle-b" => Edge {
+      "name": "@isaacs/peer-dep-cycle-b",
+      "spec": "2.x",
+      "to": "node_modules/@isaacs/peer-dep-cycle-b",
+      "type": "prod",
+    },
+  },
+  "location": "",
+  "name": "reify-cyclical-peer-deps-peer-dep-cycle-can-add-b-2-if-we-remove-a-1-dep",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP cyclical peer deps peer-dep-cycle remove the dep, prune everything > remove the dep, prune everything 1`] = `
+Node {
+  "location": "",
+  "name": "reify-cyclical-peer-deps-peer-dep-cycle-remove-the-dep-prune-everything",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP cyclical peer deps peer-dep-cycle with upgrade > expect resolving Promise 1`] = `
+Node {
+  "children": Map {
+    "@isaacs/peer-dep-cycle-a" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "2.x",
+          "type": "prod",
+        },
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-c",
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-b" => Edge {
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-b",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-a",
+      "name": "@isaacs/peer-dep-cycle-a",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-2.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-b" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-a",
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-c" => Edge {
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-c",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-b",
+      "name": "@isaacs/peer-dep-cycle-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-2.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-c" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-b",
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-a" => Edge {
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-a",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-c",
+      "name": "@isaacs/peer-dep-cycle-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-2.0.0.tgz",
+    },
+  },
+  "edgesOut": Map {
+    "@isaacs/peer-dep-cycle-a" => Edge {
+      "name": "@isaacs/peer-dep-cycle-a",
+      "spec": "2.x",
+      "to": "node_modules/@isaacs/peer-dep-cycle-a",
+      "type": "prod",
+    },
+  },
+  "location": "",
+  "name": "reify-cyclical-peer-deps-peer-dep-cycle-with-upgrade",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP cyclical peer deps peer-dep-cycle without upgrade > expect resolving Promise 1`] = `
+Node {
+  "children": Map {
+    "@isaacs/peer-dep-cycle-a" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "1",
+          "type": "prod",
+        },
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-c",
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "1",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-b" => Edge {
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "1",
+          "to": "node_modules/@isaacs/peer-dep-cycle-b",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-a",
+      "name": "@isaacs/peer-dep-cycle-a",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-1.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-b" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-a",
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "1",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-c" => Edge {
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "1",
+          "to": "node_modules/@isaacs/peer-dep-cycle-c",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-b",
+      "name": "@isaacs/peer-dep-cycle-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-1.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-c" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-b",
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "1",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-a" => Edge {
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "1",
+          "to": "node_modules/@isaacs/peer-dep-cycle-a",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-c",
+      "name": "@isaacs/peer-dep-cycle-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-1.0.0.tgz",
+    },
+  },
+  "edgesOut": Map {
+    "@isaacs/peer-dep-cycle-a" => Edge {
+      "name": "@isaacs/peer-dep-cycle-a",
+      "spec": "1",
+      "to": "node_modules/@isaacs/peer-dep-cycle-a",
+      "type": "prod",
+    },
+  },
+  "location": "",
+  "name": "reify-cyclical-peer-deps-peer-dep-cycle-without-upgrade",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP cyclical peer deps peer-dep-cycle-with-sw can add b@2 if we remove a@1 dep > can add b@2 if we remove a@1 dep 1`] = `
+Node {
+  "children": Map {
+    "@isaacs/peer-dep-cycle-a" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-c",
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-b" => Edge {
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-b",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-a",
+      "name": "@isaacs/peer-dep-cycle-a",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-2.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-b" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "2.x",
+          "type": "prod",
+        },
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-a",
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-c" => Edge {
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-c",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-b",
+      "name": "@isaacs/peer-dep-cycle-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-2.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-c" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-b",
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-a" => Edge {
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-a",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-c",
+      "name": "@isaacs/peer-dep-cycle-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-2.0.0.tgz",
+    },
+  },
+  "edgesOut": Map {
+    "@isaacs/peer-dep-cycle-b" => Edge {
+      "name": "@isaacs/peer-dep-cycle-b",
+      "spec": "2.x",
+      "to": "node_modules/@isaacs/peer-dep-cycle-b",
+      "type": "prod",
+    },
+  },
+  "location": "",
+  "name": "reify-cyclical-peer-deps-peer-dep-cycle-with-sw-can-add-b-2-if-we-remove-a-1-dep",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP cyclical peer deps peer-dep-cycle-with-sw remove the dep, prune everything > remove the dep, prune everything 1`] = `
+Node {
+  "location": "",
+  "name": "reify-cyclical-peer-deps-peer-dep-cycle-with-sw-remove-the-dep-prune-everything",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP cyclical peer deps peer-dep-cycle-with-sw with upgrade > expect resolving Promise 1`] = `
+Node {
+  "children": Map {
+    "@isaacs/peer-dep-cycle-a" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "2.x",
+          "type": "prod",
+        },
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-c",
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-b" => Edge {
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-b",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-a",
+      "name": "@isaacs/peer-dep-cycle-a",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-2.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-b" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-a",
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-c" => Edge {
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-c",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-b",
+      "name": "@isaacs/peer-dep-cycle-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-2.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-c" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-b",
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "2",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-a" => Edge {
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "2",
+          "to": "node_modules/@isaacs/peer-dep-cycle-a",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-c",
+      "name": "@isaacs/peer-dep-cycle-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-2.0.0.tgz",
+    },
+  },
+  "edgesOut": Map {
+    "@isaacs/peer-dep-cycle-a" => Edge {
+      "name": "@isaacs/peer-dep-cycle-a",
+      "spec": "2.x",
+      "to": "node_modules/@isaacs/peer-dep-cycle-a",
+      "type": "prod",
+    },
+  },
+  "location": "",
+  "name": "reify-cyclical-peer-deps-peer-dep-cycle-with-sw-with-upgrade",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP cyclical peer deps peer-dep-cycle-with-sw without upgrade > expect resolving Promise 1`] = `
+Node {
+  "children": Map {
+    "@isaacs/peer-dep-cycle-a" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "",
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "1",
+          "type": "prod",
+        },
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-c",
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "1",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-b" => Edge {
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "1",
+          "to": "node_modules/@isaacs/peer-dep-cycle-b",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-a",
+      "name": "@isaacs/peer-dep-cycle-a",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-a/-/peer-dep-cycle-a-1.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-b" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-a",
+          "name": "@isaacs/peer-dep-cycle-b",
+          "spec": "1",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-c" => Edge {
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "1",
+          "to": "node_modules/@isaacs/peer-dep-cycle-c",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-b",
+      "name": "@isaacs/peer-dep-cycle-b",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-b/-/peer-dep-cycle-b-1.0.0.tgz",
+    },
+    "@isaacs/peer-dep-cycle-c" => Node {
+      "edgesIn": Set {
+        Edge {
+          "from": "node_modules/@isaacs/peer-dep-cycle-b",
+          "name": "@isaacs/peer-dep-cycle-c",
+          "spec": "1",
+          "type": "peer",
+        },
+      },
+      "edgesOut": Map {
+        "@isaacs/peer-dep-cycle-a" => Edge {
+          "name": "@isaacs/peer-dep-cycle-a",
+          "spec": "1",
+          "to": "node_modules/@isaacs/peer-dep-cycle-a",
+          "type": "peer",
+        },
+      },
+      "location": "node_modules/@isaacs/peer-dep-cycle-c",
+      "name": "@isaacs/peer-dep-cycle-c",
+      "resolved": "https://registry.npmjs.org/@isaacs/peer-dep-cycle-c/-/peer-dep-cycle-c-1.0.0.tgz",
+    },
+  },
+  "edgesOut": Map {
+    "@isaacs/peer-dep-cycle-a" => Edge {
+      "name": "@isaacs/peer-dep-cycle-a",
+      "spec": "1",
+      "to": "node_modules/@isaacs/peer-dep-cycle-a",
+      "type": "prod",
+    },
+  },
+  "location": "",
+  "name": "reify-cyclical-peer-deps-peer-dep-cycle-with-sw-without-upgrade",
+  "resolved": null,
+}
+`
+
+exports[`test/arborist/reify.js TAP do not add shrinkwrapped deps > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/shrinkwrapped-dependency" => Node {
@@ -1305,12 +1162,12 @@ Node {
     },
   },
   "location": "",
-  "name": "shrinkwrapped-dep-no-lock",
+  "name": "reify-do-not-add-shrinkwrapped-deps",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP do not update shrinkwrapped deps > expect resolving Promise 1`] = `
+exports[`test/arborist/reify.js TAP do not update shrinkwrapped deps > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/shrinkwrapped-dependency" => Node {
@@ -1359,12 +1216,12 @@ Node {
     },
   },
   "location": "",
-  "name": "shrinkwrapped-dep-with-lock",
+  "name": "reify-do-not-update-shrinkwrapped-deps",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP nested cyclical peer deps peer-dep-cycle-nested > nested peer deps cycle 1`] = `
+exports[`test/arborist/reify.js TAP nested cyclical peer deps peer-dep-cycle-nested nested peer deps cycle > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/peer-dep-cycle" => Node {
@@ -1467,12 +1324,12 @@ Node {
     },
   },
   "location": "",
-  "name": "peer-dep-cycle-nested",
+  "name": "reify-nested-cyclical-peer-deps-peer-dep-cycle-nested-nested-peer-deps-cycle",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP nested cyclical peer deps peer-dep-cycle-nested > upgrade a 1`] = `
+exports[`test/arborist/reify.js TAP nested cyclical peer deps peer-dep-cycle-nested upgrade a > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/peer-dep-cycle" => Node {
@@ -1652,12 +1509,12 @@ Node {
     },
   },
   "location": "",
-  "name": "peer-dep-cycle-nested",
+  "name": "reify-nested-cyclical-peer-deps-peer-dep-cycle-nested-upgrade-a",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP nested cyclical peer deps peer-dep-cycle-nested > upgrade b 1`] = `
+exports[`test/arborist/reify.js TAP nested cyclical peer deps peer-dep-cycle-nested upgrade b > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/peer-dep-cycle" => Node {
@@ -1837,12 +1694,12 @@ Node {
     },
   },
   "location": "",
-  "name": "peer-dep-cycle-nested",
+  "name": "reify-nested-cyclical-peer-deps-peer-dep-cycle-nested-upgrade-b",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP nested cyclical peer deps peer-dep-cycle-nested > upgrade c 1`] = `
+exports[`test/arborist/reify.js TAP nested cyclical peer deps peer-dep-cycle-nested upgrade c > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/peer-dep-cycle" => Node {
@@ -2022,12 +1879,12 @@ Node {
     },
   },
   "location": "",
-  "name": "peer-dep-cycle-nested",
+  "name": "reify-nested-cyclical-peer-deps-peer-dep-cycle-nested-upgrade-c",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP nested cyclical peer deps peer-dep-cycle-nested-with-sw > nested peer deps cycle 1`] = `
+exports[`test/arborist/reify.js TAP nested cyclical peer deps peer-dep-cycle-nested-with-sw nested peer deps cycle > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/peer-dep-cycle" => Node {
@@ -2130,12 +1987,12 @@ Node {
     },
   },
   "location": "",
-  "name": "peer-dep-cycle-nested-with-sw",
+  "name": "reify-nested-cyclical-peer-deps-peer-dep-cycle-nested-with-sw-nested-peer-deps-cycle",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP nested cyclical peer deps peer-dep-cycle-nested-with-sw > upgrade a 1`] = `
+exports[`test/arborist/reify.js TAP nested cyclical peer deps peer-dep-cycle-nested-with-sw upgrade a > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/peer-dep-cycle" => Node {
@@ -2315,12 +2172,12 @@ Node {
     },
   },
   "location": "",
-  "name": "peer-dep-cycle-nested-with-sw",
+  "name": "reify-nested-cyclical-peer-deps-peer-dep-cycle-nested-with-sw-upgrade-a",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP nested cyclical peer deps peer-dep-cycle-nested-with-sw > upgrade b 1`] = `
+exports[`test/arborist/reify.js TAP nested cyclical peer deps peer-dep-cycle-nested-with-sw upgrade b > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/peer-dep-cycle" => Node {
@@ -2500,12 +2357,12 @@ Node {
     },
   },
   "location": "",
-  "name": "peer-dep-cycle-nested-with-sw",
+  "name": "reify-nested-cyclical-peer-deps-peer-dep-cycle-nested-with-sw-upgrade-b",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP nested cyclical peer deps peer-dep-cycle-nested-with-sw > upgrade c 1`] = `
+exports[`test/arborist/reify.js TAP nested cyclical peer deps peer-dep-cycle-nested-with-sw upgrade c > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@isaacs/peer-dep-cycle" => Node {
@@ -2685,12 +2542,12 @@ Node {
     },
   },
   "location": "",
-  "name": "peer-dep-cycle-nested-with-sw",
+  "name": "reify-nested-cyclical-peer-deps-peer-dep-cycle-nested-with-sw-upgrade-c",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP tap vs react15 > build ideal tree with tap collision 1`] = `
+exports[`test/arborist/reify.js TAP tap vs react15 > build ideal tree with tap collision 1`] = `
 Node {
   "children": Map {
     "@babel/code-frame" => Node {
@@ -12863,12 +12720,12 @@ Node {
     },
   },
   "location": "",
-  "name": "tap-react15-collision",
+  "name": "reify-tap-vs-react15",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP tap vs react15 with legacy shrinkwrap > tap collision with legacy sw file 1`] = `
+exports[`test/arborist/reify.js TAP tap vs react15 with legacy shrinkwrap > tap collision with legacy sw file 1`] = `
 Node {
   "children": Map {
     "@babel/code-frame" => Node {
@@ -23129,12 +22986,12 @@ Node {
     },
   },
   "location": "",
-  "name": "tap-react15-collision-legacy-sw",
+  "name": "reify-tap-vs-react15-with-legacy-shrinkwrap",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP testing-peer-deps nested > build ideal tree 1`] = `
+exports[`test/arborist/reify.js TAP testing-peer-deps nested > reify ideal tree 1`] = `
 Node {
   "children": Map {
     "@isaacs/testing-peer-deps" => Node {
@@ -23307,12 +23164,12 @@ Node {
     },
   },
   "location": "",
-  "name": "testing-peer-deps-nested",
+  "name": "reify-testing-peer-deps-nested",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP testing-peer-deps nested > can update a peer dep cycle 1`] = `
+exports[`test/arborist/reify.js TAP testing-peer-deps nested with update > can update a peer dep cycle 1`] = `
 Node {
   "children": Map {
     "@isaacs/testing-peer-deps" => Node {
@@ -23436,12 +23293,12 @@ Node {
     },
   },
   "location": "",
-  "name": "testing-peer-deps-nested",
+  "name": "reify-testing-peer-deps-nested-with-update",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP testing-peer-deps package > build ideal tree with peer deps 1`] = `
+exports[`test/arborist/reify.js TAP testing-peer-deps package > reify with peer deps 1`] = `
 Node {
   "children": Map {
     "@isaacs/testing-peer-deps-b" => Node {
@@ -23572,12 +23429,12 @@ Node {
     },
   },
   "location": "",
-  "name": "testing-peer-deps",
+  "name": "reify-testing-peer-deps-package",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP update flow outdated > update everything 1`] = `
+exports[`test/arborist/reify.js TAP update flow outdated update everything > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "flow-parser" => Node {
@@ -23695,12 +23552,12 @@ Node {
     },
   },
   "location": "",
-  "name": "flow-outdated",
+  "name": "reify-update-flow-outdated-update-everything",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP update flow outdated > update flow parser 1`] = `
+exports[`test/arborist/reify.js TAP update flow outdated update flow > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "flow-parser" => Node {
@@ -23827,12 +23684,12 @@ Node {
     },
   },
   "location": "",
-  "name": "flow-outdated",
+  "name": "reify-update-flow-outdated-update-flow",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP update tap and flow > update everything 1`] = `
+exports[`test/arborist/reify.js TAP update tap and flow update everything > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@babel/code-frame" => Node {
@@ -24840,12 +24697,6 @@ Node {
           "name": "@types/react",
           "spec": ">=16.8.0",
           "type": "peer",
-        },
-        Edge {
-          "from": "node_modules/tap",
-          "name": "@types/react",
-          "spec": "^16.9.16",
-          "type": "prod",
         },
       },
       "edgesOut": Map {
@@ -27231,14 +27082,6 @@ Node {
       "resolved": "https://registry.npmjs.org/http-signature/-/http-signature-1.2.0.tgz",
     },
     "import-jsx" => Node {
-      "edgesIn": Set {
-        Edge {
-          "from": "node_modules/tap",
-          "name": "import-jsx",
-          "spec": "^3.0.0",
-          "type": "prod",
-        },
-      },
       "edgesOut": Map {
         "@babel/core" => Edge {
           "name": "@babel/core",
@@ -27346,12 +27189,6 @@ Node {
           "from": "",
           "name": "ink",
           "spec": "^2.6.0",
-          "type": "prod",
-        },
-        Edge {
-          "from": "node_modules/tap",
-          "name": "ink",
-          "spec": "^2.5.0",
           "type": "prod",
         },
       },
@@ -29036,12 +28873,6 @@ Node {
       },
       "edgesIn": Set {
         Edge {
-          "from": "node_modules/tap",
-          "name": "minipass",
-          "spec": "^3.1.1",
-          "type": "prod",
-        },
-        Edge {
           "from": "node_modules/tap-parser",
           "name": "minipass",
           "spec": "^3.0.0",
@@ -30043,6 +29874,24 @@ Node {
           "spec": "^16.12.0",
           "type": "prod",
         },
+        Edge {
+          "from": "node_modules/tap/node_modules/ink",
+          "name": "react",
+          "spec": ">=16.8.0",
+          "type": "peer",
+        },
+        Edge {
+          "from": "node_modules/tap/node_modules/react-reconciler",
+          "name": "react",
+          "spec": "^16.0.0",
+          "type": "peer",
+        },
+        Edge {
+          "from": "node_modules/tap/node_modules/treport",
+          "name": "react",
+          "spec": "^16.8.6",
+          "type": "peer",
+        },
       },
       "edgesOut": Map {
         "loose-envify" => Edge {
@@ -30732,12 +30581,6 @@ Node {
           "type": "prod",
         },
         Edge {
-          "from": "node_modules/tap",
-          "name": "signal-exit",
-          "spec": "^3.0.0",
-          "type": "prod",
-        },
-        Edge {
           "from": "node_modules/write-file-atomic",
           "name": "signal-exit",
           "spec": "^3.0.2",
@@ -31336,6 +31179,3414 @@ Node {
       "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-7.1.0.tgz",
     },
     "tap" => Node {
+      "children": Map {
+        "@babel/code-frame" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "@babel/code-frame",
+              "spec": "^7.5.5",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/template",
+              "name": "@babel/code-frame",
+              "spec": "^7.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/traverse",
+              "name": "@babel/code-frame",
+              "spec": "^7.5.5",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/highlight" => Edge {
+              "name": "@babel/highlight",
+              "spec": "^7.0.0",
+              "to": "node_modules/tap/node_modules/@babel/highlight",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/code-frame",
+          "name": "@babel/code-frame",
+          "resolved": "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.5.5.tgz",
+        },
+        "@babel/core" => Node {
+          "bundled": true,
+          "children": Map {
+            "source-map" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/@babel/core",
+                  "name": "source-map",
+                  "spec": "^0.5.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/@babel/core/node_modules/source-map",
+              "name": "source-map",
+              "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-proposal-object-rest-spread",
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "type": "peer",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-syntax-jsx",
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "type": "peer",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-syntax-object-rest-spread",
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "type": "peer",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-transform-destructuring",
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "type": "peer",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-transform-react-jsx",
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "type": "peer",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/import-jsx",
+              "name": "@babel/core",
+              "spec": "^7.5.5",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/code-frame" => Edge {
+              "name": "@babel/code-frame",
+              "spec": "^7.5.5",
+              "to": "node_modules/tap/node_modules/@babel/code-frame",
+              "type": "prod",
+            },
+            "@babel/generator" => Edge {
+              "name": "@babel/generator",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/generator",
+              "type": "prod",
+            },
+            "@babel/helpers" => Edge {
+              "name": "@babel/helpers",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/helpers",
+              "type": "prod",
+            },
+            "@babel/parser" => Edge {
+              "name": "@babel/parser",
+              "spec": "^7.7.5",
+              "to": "node_modules/tap/node_modules/@babel/parser",
+              "type": "prod",
+            },
+            "@babel/template" => Edge {
+              "name": "@babel/template",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/template",
+              "type": "prod",
+            },
+            "@babel/traverse" => Edge {
+              "name": "@babel/traverse",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/traverse",
+              "type": "prod",
+            },
+            "@babel/types" => Edge {
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/types",
+              "type": "prod",
+            },
+            "convert-source-map" => Edge {
+              "name": "convert-source-map",
+              "spec": "^1.7.0",
+              "to": "node_modules/tap/node_modules/convert-source-map",
+              "type": "prod",
+            },
+            "debug" => Edge {
+              "name": "debug",
+              "spec": "^4.1.0",
+              "to": "node_modules/tap/node_modules/debug",
+              "type": "prod",
+            },
+            "json5" => Edge {
+              "name": "json5",
+              "spec": "^2.1.0",
+              "to": "node_modules/tap/node_modules/json5",
+              "type": "prod",
+            },
+            "lodash" => Edge {
+              "name": "lodash",
+              "spec": "^4.17.13",
+              "to": "node_modules/tap/node_modules/lodash",
+              "type": "prod",
+            },
+            "resolve" => Edge {
+              "name": "resolve",
+              "spec": "^1.3.2",
+              "to": "node_modules/tap/node_modules/resolve",
+              "type": "prod",
+            },
+            "semver" => Edge {
+              "name": "semver",
+              "spec": "^5.4.1",
+              "to": "node_modules/tap/node_modules/semver",
+              "type": "prod",
+            },
+            "source-map" => Edge {
+              "name": "source-map",
+              "spec": "^0.5.0",
+              "to": "node_modules/tap/node_modules/@babel/core/node_modules/source-map",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/core",
+          "name": "@babel/core",
+          "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.7.5.tgz",
+        },
+        "@babel/generator" => Node {
+          "bundled": true,
+          "children": Map {
+            "source-map" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/@babel/generator",
+                  "name": "source-map",
+                  "spec": "^0.5.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/@babel/generator/node_modules/source-map",
+              "name": "source-map",
+              "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "@babel/generator",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/traverse",
+              "name": "@babel/generator",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/types" => Edge {
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/types",
+              "type": "prod",
+            },
+            "jsesc" => Edge {
+              "name": "jsesc",
+              "spec": "^2.5.1",
+              "to": "node_modules/tap/node_modules/jsesc",
+              "type": "prod",
+            },
+            "lodash" => Edge {
+              "name": "lodash",
+              "spec": "^4.17.13",
+              "to": "node_modules/tap/node_modules/lodash",
+              "type": "prod",
+            },
+            "source-map" => Edge {
+              "name": "source-map",
+              "spec": "^0.5.0",
+              "to": "node_modules/tap/node_modules/@babel/generator/node_modules/source-map",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/generator",
+          "name": "@babel/generator",
+          "resolved": "https://registry.npmjs.org/@babel/generator/-/generator-7.7.4.tgz",
+        },
+        "@babel/helper-builder-react-jsx" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-transform-react-jsx",
+              "name": "@babel/helper-builder-react-jsx",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/types" => Edge {
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/types",
+              "type": "prod",
+            },
+            "esutils" => Edge {
+              "name": "esutils",
+              "spec": "^2.0.0",
+              "to": "node_modules/tap/node_modules/esutils",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/helper-builder-react-jsx",
+          "name": "@babel/helper-builder-react-jsx",
+          "resolved": "https://registry.npmjs.org/@babel/helper-builder-react-jsx/-/helper-builder-react-jsx-7.7.4.tgz",
+        },
+        "@babel/helper-function-name" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/traverse",
+              "name": "@babel/helper-function-name",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/helper-get-function-arity" => Edge {
+              "name": "@babel/helper-get-function-arity",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/helper-get-function-arity",
+              "type": "prod",
+            },
+            "@babel/template" => Edge {
+              "name": "@babel/template",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/template",
+              "type": "prod",
+            },
+            "@babel/types" => Edge {
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/types",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/helper-function-name",
+          "name": "@babel/helper-function-name",
+          "resolved": "https://registry.npmjs.org/@babel/helper-function-name/-/helper-function-name-7.7.4.tgz",
+        },
+        "@babel/helper-get-function-arity" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/helper-function-name",
+              "name": "@babel/helper-get-function-arity",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/types" => Edge {
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/types",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/helper-get-function-arity",
+          "name": "@babel/helper-get-function-arity",
+          "resolved": "https://registry.npmjs.org/@babel/helper-get-function-arity/-/helper-get-function-arity-7.7.4.tgz",
+        },
+        "@babel/helper-plugin-utils" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-proposal-object-rest-spread",
+              "name": "@babel/helper-plugin-utils",
+              "spec": "^7.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-syntax-jsx",
+              "name": "@babel/helper-plugin-utils",
+              "spec": "^7.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-syntax-object-rest-spread",
+              "name": "@babel/helper-plugin-utils",
+              "spec": "^7.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-transform-destructuring",
+              "name": "@babel/helper-plugin-utils",
+              "spec": "^7.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-transform-react-jsx",
+              "name": "@babel/helper-plugin-utils",
+              "spec": "^7.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/helper-plugin-utils",
+          "name": "@babel/helper-plugin-utils",
+          "resolved": "https://registry.npmjs.org/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0.tgz",
+        },
+        "@babel/helper-split-export-declaration" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/traverse",
+              "name": "@babel/helper-split-export-declaration",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/types" => Edge {
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/types",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/helper-split-export-declaration",
+          "name": "@babel/helper-split-export-declaration",
+          "resolved": "https://registry.npmjs.org/@babel/helper-split-export-declaration/-/helper-split-export-declaration-7.7.4.tgz",
+        },
+        "@babel/helpers" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "@babel/helpers",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/template" => Edge {
+              "name": "@babel/template",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/template",
+              "type": "prod",
+            },
+            "@babel/traverse" => Edge {
+              "name": "@babel/traverse",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/traverse",
+              "type": "prod",
+            },
+            "@babel/types" => Edge {
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/types",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/helpers",
+          "name": "@babel/helpers",
+          "resolved": "https://registry.npmjs.org/@babel/helpers/-/helpers-7.7.4.tgz",
+        },
+        "@babel/highlight" => Node {
+          "bundled": true,
+          "children": Map {
+            "chalk" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/@babel/highlight",
+                  "name": "chalk",
+                  "spec": "^2.0.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "ansi-styles" => Edge {
+                  "name": "ansi-styles",
+                  "spec": "^3.2.1",
+                  "to": "node_modules/tap/node_modules/ansi-styles",
+                  "type": "prod",
+                },
+                "escape-string-regexp" => Edge {
+                  "name": "escape-string-regexp",
+                  "spec": "^1.0.5",
+                  "to": "node_modules/tap/node_modules/escape-string-regexp",
+                  "type": "prod",
+                },
+                "supports-color" => Edge {
+                  "name": "supports-color",
+                  "spec": "^5.3.0",
+                  "to": "node_modules/tap/node_modules/@babel/highlight/node_modules/supports-color",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/@babel/highlight/node_modules/chalk",
+              "name": "chalk",
+              "resolved": "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz",
+            },
+            "supports-color" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/@babel/highlight/node_modules/chalk",
+                  "name": "supports-color",
+                  "spec": "^5.3.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "has-flag" => Edge {
+                  "name": "has-flag",
+                  "spec": "^3.0.0",
+                  "to": "node_modules/tap/node_modules/has-flag",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/@babel/highlight/node_modules/supports-color",
+              "name": "supports-color",
+              "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-5.5.0.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/code-frame",
+              "name": "@babel/highlight",
+              "spec": "^7.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "chalk" => Edge {
+              "name": "chalk",
+              "spec": "^2.0.0",
+              "to": "node_modules/tap/node_modules/@babel/highlight/node_modules/chalk",
+              "type": "prod",
+            },
+            "esutils" => Edge {
+              "name": "esutils",
+              "spec": "^2.0.2",
+              "to": "node_modules/tap/node_modules/esutils",
+              "type": "prod",
+            },
+            "js-tokens" => Edge {
+              "name": "js-tokens",
+              "spec": "^4.0.0",
+              "to": "node_modules/tap/node_modules/js-tokens",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/highlight",
+          "name": "@babel/highlight",
+          "resolved": "https://registry.npmjs.org/@babel/highlight/-/highlight-7.5.0.tgz",
+        },
+        "@babel/parser" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "@babel/parser",
+              "spec": "^7.7.5",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/template",
+              "name": "@babel/parser",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/traverse",
+              "name": "@babel/parser",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/parser",
+          "name": "@babel/parser",
+          "resolved": "https://registry.npmjs.org/@babel/parser/-/parser-7.7.5.tgz",
+        },
+        "@babel/plugin-proposal-object-rest-spread" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/import-jsx",
+              "name": "@babel/plugin-proposal-object-rest-spread",
+              "spec": "^7.5.5",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "peer",
+            },
+            "@babel/helper-plugin-utils" => Edge {
+              "name": "@babel/helper-plugin-utils",
+              "spec": "^7.0.0",
+              "to": "node_modules/tap/node_modules/@babel/helper-plugin-utils",
+              "type": "prod",
+            },
+            "@babel/plugin-syntax-object-rest-spread" => Edge {
+              "name": "@babel/plugin-syntax-object-rest-spread",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/plugin-syntax-object-rest-spread",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/plugin-proposal-object-rest-spread",
+          "name": "@babel/plugin-proposal-object-rest-spread",
+          "resolved": "https://registry.npmjs.org/@babel/plugin-proposal-object-rest-spread/-/plugin-proposal-object-rest-spread-7.7.4.tgz",
+        },
+        "@babel/plugin-syntax-jsx" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-transform-react-jsx",
+              "name": "@babel/plugin-syntax-jsx",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "peer",
+            },
+            "@babel/helper-plugin-utils" => Edge {
+              "name": "@babel/helper-plugin-utils",
+              "spec": "^7.0.0",
+              "to": "node_modules/tap/node_modules/@babel/helper-plugin-utils",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/plugin-syntax-jsx",
+          "name": "@babel/plugin-syntax-jsx",
+          "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-jsx/-/plugin-syntax-jsx-7.7.4.tgz",
+        },
+        "@babel/plugin-syntax-object-rest-spread" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-proposal-object-rest-spread",
+              "name": "@babel/plugin-syntax-object-rest-spread",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "peer",
+            },
+            "@babel/helper-plugin-utils" => Edge {
+              "name": "@babel/helper-plugin-utils",
+              "spec": "^7.0.0",
+              "to": "node_modules/tap/node_modules/@babel/helper-plugin-utils",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/plugin-syntax-object-rest-spread",
+          "name": "@babel/plugin-syntax-object-rest-spread",
+          "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-object-rest-spread/-/plugin-syntax-object-rest-spread-7.7.4.tgz",
+        },
+        "@babel/plugin-transform-destructuring" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/import-jsx",
+              "name": "@babel/plugin-transform-destructuring",
+              "spec": "^7.5.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "peer",
+            },
+            "@babel/helper-plugin-utils" => Edge {
+              "name": "@babel/helper-plugin-utils",
+              "spec": "^7.0.0",
+              "to": "node_modules/tap/node_modules/@babel/helper-plugin-utils",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/plugin-transform-destructuring",
+          "name": "@babel/plugin-transform-destructuring",
+          "resolved": "https://registry.npmjs.org/@babel/plugin-transform-destructuring/-/plugin-transform-destructuring-7.7.4.tgz",
+        },
+        "@babel/plugin-transform-react-jsx" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/import-jsx",
+              "name": "@babel/plugin-transform-react-jsx",
+              "spec": "^7.3.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "peer",
+            },
+            "@babel/helper-builder-react-jsx" => Edge {
+              "name": "@babel/helper-builder-react-jsx",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/helper-builder-react-jsx",
+              "type": "prod",
+            },
+            "@babel/helper-plugin-utils" => Edge {
+              "name": "@babel/helper-plugin-utils",
+              "spec": "^7.0.0",
+              "to": "node_modules/tap/node_modules/@babel/helper-plugin-utils",
+              "type": "prod",
+            },
+            "@babel/plugin-syntax-jsx" => Edge {
+              "name": "@babel/plugin-syntax-jsx",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/plugin-syntax-jsx",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/plugin-transform-react-jsx",
+          "name": "@babel/plugin-transform-react-jsx",
+          "resolved": "https://registry.npmjs.org/@babel/plugin-transform-react-jsx/-/plugin-transform-react-jsx-7.7.4.tgz",
+        },
+        "@babel/runtime" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/yaml",
+              "name": "@babel/runtime",
+              "spec": "^7.6.3",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "regenerator-runtime" => Edge {
+              "name": "regenerator-runtime",
+              "spec": "^0.13.2",
+              "to": "node_modules/tap/node_modules/regenerator-runtime",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/runtime",
+          "name": "@babel/runtime",
+          "resolved": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.7.6.tgz",
+        },
+        "@babel/template" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "@babel/template",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/helper-function-name",
+              "name": "@babel/template",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/helpers",
+              "name": "@babel/template",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/code-frame" => Edge {
+              "name": "@babel/code-frame",
+              "spec": "^7.0.0",
+              "to": "node_modules/tap/node_modules/@babel/code-frame",
+              "type": "prod",
+            },
+            "@babel/parser" => Edge {
+              "name": "@babel/parser",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/parser",
+              "type": "prod",
+            },
+            "@babel/types" => Edge {
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/types",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/template",
+          "name": "@babel/template",
+          "resolved": "https://registry.npmjs.org/@babel/template/-/template-7.7.4.tgz",
+        },
+        "@babel/traverse" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "@babel/traverse",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/helpers",
+              "name": "@babel/traverse",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/code-frame" => Edge {
+              "name": "@babel/code-frame",
+              "spec": "^7.5.5",
+              "to": "node_modules/tap/node_modules/@babel/code-frame",
+              "type": "prod",
+            },
+            "@babel/generator" => Edge {
+              "name": "@babel/generator",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/generator",
+              "type": "prod",
+            },
+            "@babel/helper-function-name" => Edge {
+              "name": "@babel/helper-function-name",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/helper-function-name",
+              "type": "prod",
+            },
+            "@babel/helper-split-export-declaration" => Edge {
+              "name": "@babel/helper-split-export-declaration",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/helper-split-export-declaration",
+              "type": "prod",
+            },
+            "@babel/parser" => Edge {
+              "name": "@babel/parser",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/parser",
+              "type": "prod",
+            },
+            "@babel/types" => Edge {
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "to": "node_modules/tap/node_modules/@babel/types",
+              "type": "prod",
+            },
+            "debug" => Edge {
+              "name": "debug",
+              "spec": "^4.1.0",
+              "to": "node_modules/tap/node_modules/debug",
+              "type": "prod",
+            },
+            "globals" => Edge {
+              "name": "globals",
+              "spec": "^11.1.0",
+              "to": "node_modules/tap/node_modules/globals",
+              "type": "prod",
+            },
+            "lodash" => Edge {
+              "name": "lodash",
+              "spec": "^4.17.13",
+              "to": "node_modules/tap/node_modules/lodash",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/traverse",
+          "name": "@babel/traverse",
+          "resolved": "https://registry.npmjs.org/@babel/traverse/-/traverse-7.7.4.tgz",
+        },
+        "@babel/types" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/generator",
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/helper-builder-react-jsx",
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/helper-function-name",
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/helper-get-function-arity",
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/helper-split-export-declaration",
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/helpers",
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/template",
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/traverse",
+              "name": "@babel/types",
+              "spec": "^7.7.4",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "esutils" => Edge {
+              "name": "esutils",
+              "spec": "^2.0.2",
+              "to": "node_modules/tap/node_modules/esutils",
+              "type": "prod",
+            },
+            "lodash" => Edge {
+              "name": "lodash",
+              "spec": "^4.17.13",
+              "to": "node_modules/tap/node_modules/lodash",
+              "type": "prod",
+            },
+            "to-fast-properties" => Edge {
+              "name": "to-fast-properties",
+              "spec": "^2.0.0",
+              "to": "node_modules/tap/node_modules/to-fast-properties",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@babel/types",
+          "name": "@babel/types",
+          "resolved": "https://registry.npmjs.org/@babel/types/-/types-7.7.4.tgz",
+        },
+        "@types/color-name" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/chalk/node_modules/ansi-styles",
+              "name": "@types/color-name",
+              "spec": "^1.1.1",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/slice-ansi/node_modules/ansi-styles",
+              "name": "@types/color-name",
+              "spec": "^1.1.1",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/wrap-ansi/node_modules/ansi-styles",
+              "name": "@types/color-name",
+              "spec": "^1.1.1",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@types/color-name",
+          "name": "@types/color-name",
+          "resolved": "https://registry.npmjs.org/@types/color-name/-/color-name-1.1.1.tgz",
+        },
+        "@types/prop-types" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@types/react",
+              "name": "@types/prop-types",
+              "spec": "*",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@types/prop-types",
+          "name": "@types/prop-types",
+          "resolved": "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.3.tgz",
+        },
+        "@types/react" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap",
+              "name": "@types/react",
+              "spec": "^16.9.16",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/auto-bind",
+              "name": "@types/react",
+              "spec": ">=16.8.0",
+              "type": "peerOptional",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "@types/react",
+              "spec": ">=16.8.0",
+              "type": "peer",
+            },
+          },
+          "edgesOut": Map {
+            "@types/prop-types" => Edge {
+              "name": "@types/prop-types",
+              "spec": "*",
+              "to": "node_modules/tap/node_modules/@types/prop-types",
+              "type": "prod",
+            },
+            "csstype" => Edge {
+              "name": "csstype",
+              "spec": "^2.2.0",
+              "to": "node_modules/tap/node_modules/csstype",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/@types/react",
+          "name": "@types/react",
+          "resolved": "https://registry.npmjs.org/@types/react/-/react-16.9.16.tgz",
+        },
+        "ansi-escapes" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "ansi-escapes",
+              "spec": "^4.2.1",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "type-fest" => Edge {
+              "name": "type-fest",
+              "spec": "^0.8.1",
+              "to": "node_modules/tap/node_modules/type-fest",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/ansi-escapes",
+          "name": "ansi-escapes",
+          "resolved": "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-4.3.0.tgz",
+        },
+        "ansi-regex" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/strip-ansi",
+              "name": "ansi-regex",
+              "spec": "^5.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/ansi-regex",
+          "name": "ansi-regex",
+          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.0.tgz",
+        },
+        "ansi-styles" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/highlight/node_modules/chalk",
+              "name": "ansi-styles",
+              "spec": "^3.2.1",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/log-update/node_modules/wrap-ansi",
+              "name": "ansi-styles",
+              "spec": "^3.2.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "color-convert" => Edge {
+              "name": "color-convert",
+              "spec": "^1.9.0",
+              "to": "node_modules/tap/node_modules/color-convert",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/ansi-styles",
+          "name": "ansi-styles",
+          "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-3.2.1.tgz",
+        },
+        "ansicolors" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/cardinal",
+              "name": "ansicolors",
+              "spec": "~0.3.2",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/ansicolors",
+          "name": "ansicolors",
+          "resolved": "https://registry.npmjs.org/ansicolors/-/ansicolors-0.3.2.tgz",
+        },
+        "arrify" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "arrify",
+              "spec": "^2.0.1",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/arrify",
+          "name": "arrify",
+          "resolved": "https://registry.npmjs.org/arrify/-/arrify-2.0.1.tgz",
+        },
+        "astral-regex" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/slice-ansi",
+              "name": "astral-regex",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/astral-regex",
+          "name": "astral-regex",
+          "resolved": "https://registry.npmjs.org/astral-regex/-/astral-regex-2.0.0.tgz",
+        },
+        "auto-bind" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "auto-bind",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@types/react" => Edge {
+              "name": "@types/react",
+              "spec": ">=16.8.0",
+              "to": "node_modules/tap/node_modules/@types/react",
+              "type": "peerOptional",
+            },
+          },
+          "location": "node_modules/tap/node_modules/auto-bind",
+          "name": "auto-bind",
+          "resolved": "https://registry.npmjs.org/auto-bind/-/auto-bind-3.0.0.tgz",
+        },
+        "caller-callsite" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/caller-path",
+              "name": "caller-callsite",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "callsites" => Edge {
+              "name": "callsites",
+              "spec": "^2.0.0",
+              "to": "node_modules/tap/node_modules/callsites",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/caller-callsite",
+          "name": "caller-callsite",
+          "resolved": "https://registry.npmjs.org/caller-callsite/-/caller-callsite-2.0.0.tgz",
+        },
+        "caller-path" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/import-jsx",
+              "name": "caller-path",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "caller-callsite" => Edge {
+              "name": "caller-callsite",
+              "spec": "^2.0.0",
+              "to": "node_modules/tap/node_modules/caller-callsite",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/caller-path",
+          "name": "caller-path",
+          "resolved": "https://registry.npmjs.org/caller-path/-/caller-path-2.0.0.tgz",
+        },
+        "callsites" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/caller-callsite",
+              "name": "callsites",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/callsites",
+          "name": "callsites",
+          "resolved": "https://registry.npmjs.org/callsites/-/callsites-2.0.0.tgz",
+        },
+        "cardinal" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/treport",
+              "name": "cardinal",
+              "spec": "^2.1.1",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "ansicolors" => Edge {
+              "name": "ansicolors",
+              "spec": "~0.3.2",
+              "to": "node_modules/tap/node_modules/ansicolors",
+              "type": "prod",
+            },
+            "redeyed" => Edge {
+              "name": "redeyed",
+              "spec": "~2.1.0",
+              "to": "node_modules/tap/node_modules/redeyed",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/cardinal",
+          "name": "cardinal",
+          "resolved": "https://registry.npmjs.org/cardinal/-/cardinal-2.1.1.tgz",
+        },
+        "chalk" => Node {
+          "bundled": true,
+          "children": Map {
+            "ansi-styles" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/chalk",
+                  "name": "ansi-styles",
+                  "spec": "^4.1.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "@types/color-name" => Edge {
+                  "name": "@types/color-name",
+                  "spec": "^1.1.1",
+                  "to": "node_modules/tap/node_modules/@types/color-name",
+                  "type": "prod",
+                },
+                "color-convert" => Edge {
+                  "name": "color-convert",
+                  "spec": "^2.0.1",
+                  "to": "node_modules/tap/node_modules/chalk/node_modules/color-convert",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/chalk/node_modules/ansi-styles",
+              "name": "ansi-styles",
+              "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.2.0.tgz",
+            },
+            "color-convert" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/chalk/node_modules/ansi-styles",
+                  "name": "color-convert",
+                  "spec": "^2.0.1",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "color-name" => Edge {
+                  "name": "color-name",
+                  "spec": "~1.1.4",
+                  "to": "node_modules/tap/node_modules/chalk/node_modules/color-name",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/chalk/node_modules/color-convert",
+              "name": "color-convert",
+              "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
+            },
+            "color-name" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/chalk/node_modules/color-convert",
+                  "name": "color-name",
+                  "spec": "~1.1.4",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/chalk/node_modules/color-name",
+              "name": "color-name",
+              "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "chalk",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/treport",
+              "name": "chalk",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "ansi-styles" => Edge {
+              "name": "ansi-styles",
+              "spec": "^4.1.0",
+              "to": "node_modules/tap/node_modules/chalk/node_modules/ansi-styles",
+              "type": "prod",
+            },
+            "supports-color" => Edge {
+              "name": "supports-color",
+              "spec": "^7.1.0",
+              "to": "node_modules/tap/node_modules/supports-color",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/chalk",
+          "name": "chalk",
+          "resolved": "https://registry.npmjs.org/chalk/-/chalk-3.0.0.tgz",
+        },
+        "ci-info" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/is-ci",
+              "name": "ci-info",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/ci-info",
+          "name": "ci-info",
+          "resolved": "https://registry.npmjs.org/ci-info/-/ci-info-2.0.0.tgz",
+        },
+        "cli-cursor" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "cli-cursor",
+              "spec": "^3.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "restore-cursor" => Edge {
+              "name": "restore-cursor",
+              "spec": "^3.1.0",
+              "to": "node_modules/tap/node_modules/restore-cursor",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/cli-cursor",
+          "name": "cli-cursor",
+          "resolved": "https://registry.npmjs.org/cli-cursor/-/cli-cursor-3.1.0.tgz",
+        },
+        "cli-truncate" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "cli-truncate",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "slice-ansi" => Edge {
+              "name": "slice-ansi",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/slice-ansi",
+              "type": "prod",
+            },
+            "string-width" => Edge {
+              "name": "string-width",
+              "spec": "^4.2.0",
+              "to": "node_modules/tap/node_modules/string-width",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/cli-truncate",
+          "name": "cli-truncate",
+          "resolved": "https://registry.npmjs.org/cli-truncate/-/cli-truncate-2.1.0.tgz",
+        },
+        "color-convert" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ansi-styles",
+              "name": "color-convert",
+              "spec": "^1.9.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "color-name" => Edge {
+              "name": "color-name",
+              "spec": "1.1.3",
+              "to": "node_modules/tap/node_modules/color-name",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/color-convert",
+          "name": "color-convert",
+          "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz",
+        },
+        "color-name" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/color-convert",
+              "name": "color-name",
+              "spec": "1.1.3",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/color-name",
+          "name": "color-name",
+          "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.3.tgz",
+        },
+        "convert-source-map" => Node {
+          "bundled": true,
+          "children": Map {
+            "safe-buffer" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/convert-source-map",
+                  "name": "safe-buffer",
+                  "spec": "~5.1.1",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/convert-source-map/node_modules/safe-buffer",
+              "name": "safe-buffer",
+              "resolved": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "convert-source-map",
+              "spec": "^1.7.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "safe-buffer" => Edge {
+              "name": "safe-buffer",
+              "spec": "~5.1.1",
+              "to": "node_modules/tap/node_modules/convert-source-map/node_modules/safe-buffer",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/convert-source-map",
+          "name": "convert-source-map",
+          "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.7.0.tgz",
+        },
+        "csstype" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@types/react",
+              "name": "csstype",
+              "spec": "^2.2.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/csstype",
+          "name": "csstype",
+          "resolved": "https://registry.npmjs.org/csstype/-/csstype-2.6.8.tgz",
+        },
+        "debug" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "debug",
+              "spec": "^4.1.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/traverse",
+              "name": "debug",
+              "spec": "^4.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "ms" => Edge {
+              "name": "ms",
+              "spec": "^2.1.1",
+              "to": "node_modules/tap/node_modules/ms",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/debug",
+          "name": "debug",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-4.1.1.tgz",
+        },
+        "emoji-regex" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/string-width",
+              "name": "emoji-regex",
+              "spec": "^8.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/emoji-regex",
+          "name": "emoji-regex",
+          "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz",
+        },
+        "escape-string-regexp" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/highlight/node_modules/chalk",
+              "name": "escape-string-regexp",
+              "spec": "^1.0.5",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/escape-string-regexp",
+          "name": "escape-string-regexp",
+          "resolved": "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz",
+        },
+        "esprima" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/redeyed",
+              "name": "esprima",
+              "spec": "~4.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/esprima",
+          "name": "esprima",
+          "resolved": "https://registry.npmjs.org/esprima/-/esprima-4.0.1.tgz",
+        },
+        "esutils" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/helper-builder-react-jsx",
+              "name": "esutils",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/highlight",
+              "name": "esutils",
+              "spec": "^2.0.2",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/types",
+              "name": "esutils",
+              "spec": "^2.0.2",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/esutils",
+          "name": "esutils",
+          "resolved": "https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz",
+        },
+        "events-to-array" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/tap-parser",
+              "name": "events-to-array",
+              "spec": "^1.0.1",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/events-to-array",
+          "name": "events-to-array",
+          "resolved": "https://registry.npmjs.org/events-to-array/-/events-to-array-1.1.2.tgz",
+        },
+        "globals" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/traverse",
+              "name": "globals",
+              "spec": "^11.1.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/globals",
+          "name": "globals",
+          "resolved": "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz",
+        },
+        "has-flag" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/highlight/node_modules/supports-color",
+              "name": "has-flag",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/has-flag",
+          "name": "has-flag",
+          "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-3.0.0.tgz",
+        },
+        "import-jsx" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap",
+              "name": "import-jsx",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/treport",
+              "name": "import-jsx",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.5.5",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "prod",
+            },
+            "@babel/plugin-proposal-object-rest-spread" => Edge {
+              "name": "@babel/plugin-proposal-object-rest-spread",
+              "spec": "^7.5.5",
+              "to": "node_modules/tap/node_modules/@babel/plugin-proposal-object-rest-spread",
+              "type": "prod",
+            },
+            "@babel/plugin-transform-destructuring" => Edge {
+              "name": "@babel/plugin-transform-destructuring",
+              "spec": "^7.5.0",
+              "to": "node_modules/tap/node_modules/@babel/plugin-transform-destructuring",
+              "type": "prod",
+            },
+            "@babel/plugin-transform-react-jsx" => Edge {
+              "name": "@babel/plugin-transform-react-jsx",
+              "spec": "^7.3.0",
+              "to": "node_modules/tap/node_modules/@babel/plugin-transform-react-jsx",
+              "type": "prod",
+            },
+            "caller-path" => Edge {
+              "name": "caller-path",
+              "spec": "^2.0.0",
+              "to": "node_modules/tap/node_modules/caller-path",
+              "type": "prod",
+            },
+            "resolve-from" => Edge {
+              "name": "resolve-from",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/resolve-from",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/import-jsx",
+          "name": "import-jsx",
+          "resolved": "https://registry.npmjs.org/import-jsx/-/import-jsx-3.0.0.tgz",
+        },
+        "ink" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap",
+              "name": "ink",
+              "spec": "^2.5.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/treport",
+              "name": "ink",
+              "spec": "^2.5.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@types/react" => Edge {
+              "name": "@types/react",
+              "spec": ">=16.8.0",
+              "to": "node_modules/tap/node_modules/@types/react",
+              "type": "peer",
+            },
+            "ansi-escapes" => Edge {
+              "name": "ansi-escapes",
+              "spec": "^4.2.1",
+              "to": "node_modules/tap/node_modules/ansi-escapes",
+              "type": "prod",
+            },
+            "arrify" => Edge {
+              "name": "arrify",
+              "spec": "^2.0.1",
+              "to": "node_modules/tap/node_modules/arrify",
+              "type": "prod",
+            },
+            "auto-bind" => Edge {
+              "name": "auto-bind",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/auto-bind",
+              "type": "prod",
+            },
+            "chalk" => Edge {
+              "name": "chalk",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/chalk",
+              "type": "prod",
+            },
+            "cli-cursor" => Edge {
+              "name": "cli-cursor",
+              "spec": "^3.1.0",
+              "to": "node_modules/tap/node_modules/cli-cursor",
+              "type": "prod",
+            },
+            "cli-truncate" => Edge {
+              "name": "cli-truncate",
+              "spec": "^2.0.0",
+              "to": "node_modules/tap/node_modules/cli-truncate",
+              "type": "prod",
+            },
+            "is-ci" => Edge {
+              "name": "is-ci",
+              "spec": "^2.0.0",
+              "to": "node_modules/tap/node_modules/is-ci",
+              "type": "prod",
+            },
+            "lodash.throttle" => Edge {
+              "name": "lodash.throttle",
+              "spec": "^4.1.1",
+              "to": "node_modules/tap/node_modules/lodash.throttle",
+              "type": "prod",
+            },
+            "log-update" => Edge {
+              "name": "log-update",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/log-update",
+              "type": "prod",
+            },
+            "prop-types" => Edge {
+              "name": "prop-types",
+              "spec": "^15.6.2",
+              "to": "node_modules/tap/node_modules/prop-types",
+              "type": "prod",
+            },
+            "react" => Edge {
+              "name": "react",
+              "spec": ">=16.8.0",
+              "to": "node_modules/react",
+              "type": "peer",
+            },
+            "react-reconciler" => Edge {
+              "name": "react-reconciler",
+              "spec": "^0.24.0",
+              "to": "node_modules/tap/node_modules/react-reconciler",
+              "type": "prod",
+            },
+            "scheduler" => Edge {
+              "name": "scheduler",
+              "spec": "^0.18.0",
+              "to": "node_modules/tap/node_modules/scheduler",
+              "type": "prod",
+            },
+            "signal-exit" => Edge {
+              "name": "signal-exit",
+              "spec": "^3.0.2",
+              "to": "node_modules/tap/node_modules/signal-exit",
+              "type": "prod",
+            },
+            "slice-ansi" => Edge {
+              "name": "slice-ansi",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/slice-ansi",
+              "type": "prod",
+            },
+            "string-length" => Edge {
+              "name": "string-length",
+              "spec": "^3.1.0",
+              "to": "node_modules/tap/node_modules/string-length",
+              "type": "prod",
+            },
+            "widest-line" => Edge {
+              "name": "widest-line",
+              "spec": "^3.1.0",
+              "to": "node_modules/tap/node_modules/widest-line",
+              "type": "prod",
+            },
+            "wrap-ansi" => Edge {
+              "name": "wrap-ansi",
+              "spec": "^6.2.0",
+              "to": "node_modules/tap/node_modules/wrap-ansi",
+              "type": "prod",
+            },
+            "yoga-layout-prebuilt" => Edge {
+              "name": "yoga-layout-prebuilt",
+              "spec": "^1.9.3",
+              "to": "node_modules/tap/node_modules/yoga-layout-prebuilt",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/ink",
+          "name": "ink",
+          "resolved": "https://registry.npmjs.org/ink/-/ink-2.6.0.tgz",
+        },
+        "is-ci" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "is-ci",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "ci-info" => Edge {
+              "name": "ci-info",
+              "spec": "^2.0.0",
+              "to": "node_modules/tap/node_modules/ci-info",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/is-ci",
+          "name": "is-ci",
+          "resolved": "https://registry.npmjs.org/is-ci/-/is-ci-2.0.0.tgz",
+        },
+        "is-fullwidth-code-point" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/slice-ansi",
+              "name": "is-fullwidth-code-point",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/string-width",
+              "name": "is-fullwidth-code-point",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/is-fullwidth-code-point",
+          "name": "is-fullwidth-code-point",
+          "resolved": "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz",
+        },
+        "js-tokens" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/highlight",
+              "name": "js-tokens",
+              "spec": "^4.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/loose-envify",
+              "name": "js-tokens",
+              "spec": "^3.0.0 || ^4.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/js-tokens",
+          "name": "js-tokens",
+          "resolved": "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz",
+        },
+        "jsesc" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/generator",
+              "name": "jsesc",
+              "spec": "^2.5.1",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/jsesc",
+          "name": "jsesc",
+          "resolved": "https://registry.npmjs.org/jsesc/-/jsesc-2.5.2.tgz",
+        },
+        "json5" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "json5",
+              "spec": "^2.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "minimist" => Edge {
+              "name": "minimist",
+              "spec": "^1.2.0",
+              "to": "node_modules/tap/node_modules/minimist",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/json5",
+          "name": "json5",
+          "resolved": "https://registry.npmjs.org/json5/-/json5-2.1.1.tgz",
+        },
+        "lodash" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "lodash",
+              "spec": "^4.17.13",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/generator",
+              "name": "lodash",
+              "spec": "^4.17.13",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/traverse",
+              "name": "lodash",
+              "spec": "^4.17.13",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/types",
+              "name": "lodash",
+              "spec": "^4.17.13",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/lodash",
+          "name": "lodash",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
+        },
+        "lodash.throttle" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "lodash.throttle",
+              "spec": "^4.1.1",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/lodash.throttle",
+          "name": "lodash.throttle",
+          "resolved": "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz",
+        },
+        "log-update" => Node {
+          "bundled": true,
+          "children": Map {
+            "ansi-escapes" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update",
+                  "name": "ansi-escapes",
+                  "spec": "^3.2.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/ansi-escapes",
+              "name": "ansi-escapes",
+              "resolved": "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-3.2.0.tgz",
+            },
+            "ansi-regex" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update/node_modules/strip-ansi",
+                  "name": "ansi-regex",
+                  "spec": "^4.1.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/ansi-regex",
+              "name": "ansi-regex",
+              "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.0.tgz",
+            },
+            "cli-cursor" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update",
+                  "name": "cli-cursor",
+                  "spec": "^2.1.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "restore-cursor" => Edge {
+                  "name": "restore-cursor",
+                  "spec": "^2.0.0",
+                  "to": "node_modules/tap/node_modules/log-update/node_modules/restore-cursor",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/cli-cursor",
+              "name": "cli-cursor",
+              "resolved": "https://registry.npmjs.org/cli-cursor/-/cli-cursor-2.1.0.tgz",
+            },
+            "emoji-regex" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update/node_modules/string-width",
+                  "name": "emoji-regex",
+                  "spec": "^7.0.1",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/emoji-regex",
+              "name": "emoji-regex",
+              "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-7.0.3.tgz",
+            },
+            "is-fullwidth-code-point" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update/node_modules/string-width",
+                  "name": "is-fullwidth-code-point",
+                  "spec": "^2.0.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/is-fullwidth-code-point",
+              "name": "is-fullwidth-code-point",
+              "resolved": "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-2.0.0.tgz",
+            },
+            "mimic-fn" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update/node_modules/onetime",
+                  "name": "mimic-fn",
+                  "spec": "^1.0.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/mimic-fn",
+              "name": "mimic-fn",
+              "resolved": "https://registry.npmjs.org/mimic-fn/-/mimic-fn-1.2.0.tgz",
+            },
+            "onetime" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update/node_modules/restore-cursor",
+                  "name": "onetime",
+                  "spec": "^2.0.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "mimic-fn" => Edge {
+                  "name": "mimic-fn",
+                  "spec": "^1.0.0",
+                  "to": "node_modules/tap/node_modules/log-update/node_modules/mimic-fn",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/onetime",
+              "name": "onetime",
+              "resolved": "https://registry.npmjs.org/onetime/-/onetime-2.0.1.tgz",
+            },
+            "restore-cursor" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update/node_modules/cli-cursor",
+                  "name": "restore-cursor",
+                  "spec": "^2.0.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "onetime" => Edge {
+                  "name": "onetime",
+                  "spec": "^2.0.0",
+                  "to": "node_modules/tap/node_modules/log-update/node_modules/onetime",
+                  "type": "prod",
+                },
+                "signal-exit" => Edge {
+                  "name": "signal-exit",
+                  "spec": "^3.0.2",
+                  "to": "node_modules/tap/node_modules/signal-exit",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/restore-cursor",
+              "name": "restore-cursor",
+              "resolved": "https://registry.npmjs.org/restore-cursor/-/restore-cursor-2.0.0.tgz",
+            },
+            "string-width" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update/node_modules/wrap-ansi",
+                  "name": "string-width",
+                  "spec": "^3.0.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "emoji-regex" => Edge {
+                  "name": "emoji-regex",
+                  "spec": "^7.0.1",
+                  "to": "node_modules/tap/node_modules/log-update/node_modules/emoji-regex",
+                  "type": "prod",
+                },
+                "is-fullwidth-code-point" => Edge {
+                  "name": "is-fullwidth-code-point",
+                  "spec": "^2.0.0",
+                  "to": "node_modules/tap/node_modules/log-update/node_modules/is-fullwidth-code-point",
+                  "type": "prod",
+                },
+                "strip-ansi" => Edge {
+                  "name": "strip-ansi",
+                  "spec": "^5.1.0",
+                  "to": "node_modules/tap/node_modules/log-update/node_modules/strip-ansi",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/string-width",
+              "name": "string-width",
+              "resolved": "https://registry.npmjs.org/string-width/-/string-width-3.1.0.tgz",
+            },
+            "strip-ansi" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update/node_modules/string-width",
+                  "name": "strip-ansi",
+                  "spec": "^5.1.0",
+                  "type": "prod",
+                },
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update/node_modules/wrap-ansi",
+                  "name": "strip-ansi",
+                  "spec": "^5.0.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "ansi-regex" => Edge {
+                  "name": "ansi-regex",
+                  "spec": "^4.1.0",
+                  "to": "node_modules/tap/node_modules/log-update/node_modules/ansi-regex",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/strip-ansi",
+              "name": "strip-ansi",
+              "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-5.2.0.tgz",
+            },
+            "wrap-ansi" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/log-update",
+                  "name": "wrap-ansi",
+                  "spec": "^5.0.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "ansi-styles" => Edge {
+                  "name": "ansi-styles",
+                  "spec": "^3.2.0",
+                  "to": "node_modules/tap/node_modules/ansi-styles",
+                  "type": "prod",
+                },
+                "string-width" => Edge {
+                  "name": "string-width",
+                  "spec": "^3.0.0",
+                  "to": "node_modules/tap/node_modules/log-update/node_modules/string-width",
+                  "type": "prod",
+                },
+                "strip-ansi" => Edge {
+                  "name": "strip-ansi",
+                  "spec": "^5.0.0",
+                  "to": "node_modules/tap/node_modules/log-update/node_modules/strip-ansi",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/log-update/node_modules/wrap-ansi",
+              "name": "wrap-ansi",
+              "resolved": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-5.1.0.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "log-update",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "ansi-escapes" => Edge {
+              "name": "ansi-escapes",
+              "spec": "^3.2.0",
+              "to": "node_modules/tap/node_modules/log-update/node_modules/ansi-escapes",
+              "type": "prod",
+            },
+            "cli-cursor" => Edge {
+              "name": "cli-cursor",
+              "spec": "^2.1.0",
+              "to": "node_modules/tap/node_modules/log-update/node_modules/cli-cursor",
+              "type": "prod",
+            },
+            "wrap-ansi" => Edge {
+              "name": "wrap-ansi",
+              "spec": "^5.0.0",
+              "to": "node_modules/tap/node_modules/log-update/node_modules/wrap-ansi",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/log-update",
+          "name": "log-update",
+          "resolved": "https://registry.npmjs.org/log-update/-/log-update-3.3.0.tgz",
+        },
+        "loose-envify" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/prop-types",
+              "name": "loose-envify",
+              "spec": "^1.4.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/react-reconciler",
+              "name": "loose-envify",
+              "spec": "^1.1.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/scheduler",
+              "name": "loose-envify",
+              "spec": "^1.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "js-tokens" => Edge {
+              "name": "js-tokens",
+              "spec": "^3.0.0 || ^4.0.0",
+              "to": "node_modules/tap/node_modules/js-tokens",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/loose-envify",
+          "name": "loose-envify",
+          "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz",
+        },
+        "mimic-fn" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/onetime",
+              "name": "mimic-fn",
+              "spec": "^2.1.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/mimic-fn",
+          "name": "mimic-fn",
+          "resolved": "https://registry.npmjs.org/mimic-fn/-/mimic-fn-2.1.0.tgz",
+        },
+        "minimist" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/json5",
+              "name": "minimist",
+              "spec": "^1.2.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/minimist",
+          "name": "minimist",
+          "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.0.tgz",
+        },
+        "minipass" => Node {
+          "bundled": true,
+          "children": Map {
+            "yallist" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/minipass",
+                  "name": "yallist",
+                  "spec": "^4.0.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/minipass/node_modules/yallist",
+              "name": "yallist",
+              "resolved": "https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap",
+              "name": "minipass",
+              "spec": "^3.1.1",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/tap-parser",
+              "name": "minipass",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "yallist" => Edge {
+              "name": "yallist",
+              "spec": "^4.0.0",
+              "to": "node_modules/tap/node_modules/minipass/node_modules/yallist",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/minipass",
+          "name": "minipass",
+          "resolved": "https://registry.npmjs.org/minipass/-/minipass-3.1.1.tgz",
+        },
+        "ms" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/debug",
+              "name": "ms",
+              "spec": "^2.1.1",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/treport",
+              "name": "ms",
+              "spec": "^2.1.2",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/ms",
+          "name": "ms",
+          "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz",
+        },
+        "object-assign" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/prop-types",
+              "name": "object-assign",
+              "spec": "^4.1.1",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/react-reconciler",
+              "name": "object-assign",
+              "spec": "^4.1.1",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/scheduler",
+              "name": "object-assign",
+              "spec": "^4.1.1",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/object-assign",
+          "name": "object-assign",
+          "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz",
+        },
+        "onetime" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/restore-cursor",
+              "name": "onetime",
+              "spec": "^5.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "mimic-fn" => Edge {
+              "name": "mimic-fn",
+              "spec": "^2.1.0",
+              "to": "node_modules/tap/node_modules/mimic-fn",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/onetime",
+          "name": "onetime",
+          "resolved": "https://registry.npmjs.org/onetime/-/onetime-5.1.0.tgz",
+        },
+        "path-parse" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/resolve",
+              "name": "path-parse",
+              "spec": "^1.0.6",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/path-parse",
+          "name": "path-parse",
+          "resolved": "https://registry.npmjs.org/path-parse/-/path-parse-1.0.6.tgz",
+        },
+        "prop-types" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "prop-types",
+              "spec": "^15.6.2",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/react-reconciler",
+              "name": "prop-types",
+              "spec": "^15.6.2",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "loose-envify" => Edge {
+              "name": "loose-envify",
+              "spec": "^1.4.0",
+              "to": "node_modules/tap/node_modules/loose-envify",
+              "type": "prod",
+            },
+            "object-assign" => Edge {
+              "name": "object-assign",
+              "spec": "^4.1.1",
+              "to": "node_modules/tap/node_modules/object-assign",
+              "type": "prod",
+            },
+            "react-is" => Edge {
+              "name": "react-is",
+              "spec": "^16.8.1",
+              "to": "node_modules/tap/node_modules/react-is",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/prop-types",
+          "name": "prop-types",
+          "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz",
+        },
+        "punycode" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/treport/node_modules/unicode-length",
+              "name": "punycode",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/punycode",
+          "name": "punycode",
+          "resolved": "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz",
+        },
+        "react-is" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/prop-types",
+              "name": "react-is",
+              "spec": "^16.8.1",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/react-is",
+          "name": "react-is",
+          "resolved": "https://registry.npmjs.org/react-is/-/react-is-16.12.0.tgz",
+        },
+        "react-reconciler" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "react-reconciler",
+              "spec": "^0.24.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "loose-envify" => Edge {
+              "name": "loose-envify",
+              "spec": "^1.1.0",
+              "to": "node_modules/tap/node_modules/loose-envify",
+              "type": "prod",
+            },
+            "object-assign" => Edge {
+              "name": "object-assign",
+              "spec": "^4.1.1",
+              "to": "node_modules/tap/node_modules/object-assign",
+              "type": "prod",
+            },
+            "prop-types" => Edge {
+              "name": "prop-types",
+              "spec": "^15.6.2",
+              "to": "node_modules/tap/node_modules/prop-types",
+              "type": "prod",
+            },
+            "react" => Edge {
+              "name": "react",
+              "spec": "^16.0.0",
+              "to": "node_modules/react",
+              "type": "peer",
+            },
+            "scheduler" => Edge {
+              "name": "scheduler",
+              "spec": "^0.18.0",
+              "to": "node_modules/tap/node_modules/scheduler",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/react-reconciler",
+          "name": "react-reconciler",
+          "resolved": "https://registry.npmjs.org/react-reconciler/-/react-reconciler-0.24.0.tgz",
+        },
+        "redeyed" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/cardinal",
+              "name": "redeyed",
+              "spec": "~2.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "esprima" => Edge {
+              "name": "esprima",
+              "spec": "~4.0.0",
+              "to": "node_modules/tap/node_modules/esprima",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/redeyed",
+          "name": "redeyed",
+          "resolved": "https://registry.npmjs.org/redeyed/-/redeyed-2.1.1.tgz",
+        },
+        "regenerator-runtime" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/runtime",
+              "name": "regenerator-runtime",
+              "spec": "^0.13.2",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/regenerator-runtime",
+          "name": "regenerator-runtime",
+          "resolved": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz",
+        },
+        "resolve" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "resolve",
+              "spec": "^1.3.2",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "path-parse" => Edge {
+              "name": "path-parse",
+              "spec": "^1.0.6",
+              "to": "node_modules/tap/node_modules/path-parse",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/resolve",
+          "name": "resolve",
+          "resolved": "https://registry.npmjs.org/resolve/-/resolve-1.13.1.tgz",
+        },
+        "resolve-from" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/import-jsx",
+              "name": "resolve-from",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/resolve-from",
+          "name": "resolve-from",
+          "resolved": "https://registry.npmjs.org/resolve-from/-/resolve-from-3.0.0.tgz",
+        },
+        "restore-cursor" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/cli-cursor",
+              "name": "restore-cursor",
+              "spec": "^3.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "onetime" => Edge {
+              "name": "onetime",
+              "spec": "^5.1.0",
+              "to": "node_modules/tap/node_modules/onetime",
+              "type": "prod",
+            },
+            "signal-exit" => Edge {
+              "name": "signal-exit",
+              "spec": "^3.0.2",
+              "to": "node_modules/tap/node_modules/signal-exit",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/restore-cursor",
+          "name": "restore-cursor",
+          "resolved": "https://registry.npmjs.org/restore-cursor/-/restore-cursor-3.1.0.tgz",
+        },
+        "scheduler" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "scheduler",
+              "spec": "^0.18.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/react-reconciler",
+              "name": "scheduler",
+              "spec": "^0.18.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "loose-envify" => Edge {
+              "name": "loose-envify",
+              "spec": "^1.1.0",
+              "to": "node_modules/tap/node_modules/loose-envify",
+              "type": "prod",
+            },
+            "object-assign" => Edge {
+              "name": "object-assign",
+              "spec": "^4.1.1",
+              "to": "node_modules/tap/node_modules/object-assign",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/scheduler",
+          "name": "scheduler",
+          "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.18.0.tgz",
+        },
+        "semver" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/core",
+              "name": "semver",
+              "spec": "^5.4.1",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/semver",
+          "name": "semver",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.1.tgz",
+        },
+        "signal-exit" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap",
+              "name": "signal-exit",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "signal-exit",
+              "spec": "^3.0.2",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/log-update/node_modules/restore-cursor",
+              "name": "signal-exit",
+              "spec": "^3.0.2",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/restore-cursor",
+              "name": "signal-exit",
+              "spec": "^3.0.2",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/signal-exit",
+          "name": "signal-exit",
+          "resolved": "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.2.tgz",
+        },
+        "slice-ansi" => Node {
+          "bundled": true,
+          "children": Map {
+            "ansi-styles" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/slice-ansi",
+                  "name": "ansi-styles",
+                  "spec": "^4.0.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "@types/color-name" => Edge {
+                  "name": "@types/color-name",
+                  "spec": "^1.1.1",
+                  "to": "node_modules/tap/node_modules/@types/color-name",
+                  "type": "prod",
+                },
+                "color-convert" => Edge {
+                  "name": "color-convert",
+                  "spec": "^2.0.1",
+                  "to": "node_modules/tap/node_modules/slice-ansi/node_modules/color-convert",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/slice-ansi/node_modules/ansi-styles",
+              "name": "ansi-styles",
+              "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.2.0.tgz",
+            },
+            "color-convert" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/slice-ansi/node_modules/ansi-styles",
+                  "name": "color-convert",
+                  "spec": "^2.0.1",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "color-name" => Edge {
+                  "name": "color-name",
+                  "spec": "~1.1.4",
+                  "to": "node_modules/tap/node_modules/slice-ansi/node_modules/color-name",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/slice-ansi/node_modules/color-convert",
+              "name": "color-convert",
+              "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
+            },
+            "color-name" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/slice-ansi/node_modules/color-convert",
+                  "name": "color-name",
+                  "spec": "~1.1.4",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/slice-ansi/node_modules/color-name",
+              "name": "color-name",
+              "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/cli-truncate",
+              "name": "slice-ansi",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "slice-ansi",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "ansi-styles" => Edge {
+              "name": "ansi-styles",
+              "spec": "^4.0.0",
+              "to": "node_modules/tap/node_modules/slice-ansi/node_modules/ansi-styles",
+              "type": "prod",
+            },
+            "astral-regex" => Edge {
+              "name": "astral-regex",
+              "spec": "^2.0.0",
+              "to": "node_modules/tap/node_modules/astral-regex",
+              "type": "prod",
+            },
+            "is-fullwidth-code-point" => Edge {
+              "name": "is-fullwidth-code-point",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/is-fullwidth-code-point",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/slice-ansi",
+          "name": "slice-ansi",
+          "resolved": "https://registry.npmjs.org/slice-ansi/-/slice-ansi-3.0.0.tgz",
+        },
+        "string-length" => Node {
+          "bundled": true,
+          "children": Map {
+            "ansi-regex" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/string-length/node_modules/strip-ansi",
+                  "name": "ansi-regex",
+                  "spec": "^4.1.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/string-length/node_modules/ansi-regex",
+              "name": "ansi-regex",
+              "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.0.tgz",
+            },
+            "astral-regex" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/string-length",
+                  "name": "astral-regex",
+                  "spec": "^1.0.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/string-length/node_modules/astral-regex",
+              "name": "astral-regex",
+              "resolved": "https://registry.npmjs.org/astral-regex/-/astral-regex-1.0.0.tgz",
+            },
+            "strip-ansi" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/string-length",
+                  "name": "strip-ansi",
+                  "spec": "^5.2.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "ansi-regex" => Edge {
+                  "name": "ansi-regex",
+                  "spec": "^4.1.0",
+                  "to": "node_modules/tap/node_modules/string-length/node_modules/ansi-regex",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/string-length/node_modules/strip-ansi",
+              "name": "strip-ansi",
+              "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-5.2.0.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "string-length",
+              "spec": "^3.1.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/treport",
+              "name": "string-length",
+              "spec": "^3.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "astral-regex" => Edge {
+              "name": "astral-regex",
+              "spec": "^1.0.0",
+              "to": "node_modules/tap/node_modules/string-length/node_modules/astral-regex",
+              "type": "prod",
+            },
+            "strip-ansi" => Edge {
+              "name": "strip-ansi",
+              "spec": "^5.2.0",
+              "to": "node_modules/tap/node_modules/string-length/node_modules/strip-ansi",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/string-length",
+          "name": "string-length",
+          "resolved": "https://registry.npmjs.org/string-length/-/string-length-3.1.0.tgz",
+        },
+        "string-width" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/cli-truncate",
+              "name": "string-width",
+              "spec": "^4.2.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/widest-line",
+              "name": "string-width",
+              "spec": "^4.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/wrap-ansi",
+              "name": "string-width",
+              "spec": "^4.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "emoji-regex" => Edge {
+              "name": "emoji-regex",
+              "spec": "^8.0.0",
+              "to": "node_modules/tap/node_modules/emoji-regex",
+              "type": "prod",
+            },
+            "is-fullwidth-code-point" => Edge {
+              "name": "is-fullwidth-code-point",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/is-fullwidth-code-point",
+              "type": "prod",
+            },
+            "strip-ansi" => Edge {
+              "name": "strip-ansi",
+              "spec": "^6.0.0",
+              "to": "node_modules/tap/node_modules/strip-ansi",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/string-width",
+          "name": "string-width",
+          "resolved": "https://registry.npmjs.org/string-width/-/string-width-4.2.0.tgz",
+        },
+        "strip-ansi" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/string-width",
+              "name": "strip-ansi",
+              "spec": "^6.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/wrap-ansi",
+              "name": "strip-ansi",
+              "spec": "^6.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "ansi-regex" => Edge {
+              "name": "ansi-regex",
+              "spec": "^5.0.0",
+              "to": "node_modules/tap/node_modules/ansi-regex",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/strip-ansi",
+          "name": "strip-ansi",
+          "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.0.tgz",
+        },
+        "supports-color" => Node {
+          "bundled": true,
+          "children": Map {
+            "has-flag" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/supports-color",
+                  "name": "has-flag",
+                  "spec": "^4.0.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/supports-color/node_modules/has-flag",
+              "name": "has-flag",
+              "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/chalk",
+              "name": "supports-color",
+              "spec": "^7.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "has-flag" => Edge {
+              "name": "has-flag",
+              "spec": "^4.0.0",
+              "to": "node_modules/tap/node_modules/supports-color/node_modules/has-flag",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/supports-color",
+          "name": "supports-color",
+          "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-7.1.0.tgz",
+        },
+        "tap-parser" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap",
+              "name": "tap-parser",
+              "spec": "^10.0.1",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/treport",
+              "name": "tap-parser",
+              "spec": "^10.0.1",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "events-to-array" => Edge {
+              "name": "events-to-array",
+              "spec": "^1.0.1",
+              "to": "node_modules/tap/node_modules/events-to-array",
+              "type": "prod",
+            },
+            "minipass" => Edge {
+              "name": "minipass",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/minipass",
+              "type": "prod",
+            },
+            "tap-yaml" => Edge {
+              "name": "tap-yaml",
+              "spec": "^1.0.0",
+              "to": "node_modules/tap/node_modules/tap-yaml",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/tap-parser",
+          "name": "tap-parser",
+          "resolved": "https://registry.npmjs.org/tap-parser/-/tap-parser-10.0.1.tgz",
+        },
+        "tap-yaml" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap",
+              "name": "tap-yaml",
+              "spec": "^1.0.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/tap-parser",
+              "name": "tap-yaml",
+              "spec": "^1.0.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "yaml" => Edge {
+              "name": "yaml",
+              "spec": "^1.5.0",
+              "to": "node_modules/tap/node_modules/yaml",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/tap-yaml",
+          "name": "tap-yaml",
+          "resolved": "https://registry.npmjs.org/tap-yaml/-/tap-yaml-1.0.0.tgz",
+        },
+        "to-fast-properties" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/types",
+              "name": "to-fast-properties",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/to-fast-properties",
+          "name": "to-fast-properties",
+          "resolved": "https://registry.npmjs.org/to-fast-properties/-/to-fast-properties-2.0.0.tgz",
+        },
+        "treport" => Node {
+          "bundled": true,
+          "children": Map {
+            "ansi-regex" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/treport/node_modules/strip-ansi",
+                  "name": "ansi-regex",
+                  "spec": "^2.0.0",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/treport/node_modules/ansi-regex",
+              "name": "ansi-regex",
+              "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-2.1.1.tgz",
+            },
+            "strip-ansi" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/treport/node_modules/unicode-length",
+                  "name": "strip-ansi",
+                  "spec": "^3.0.1",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "ansi-regex" => Edge {
+                  "name": "ansi-regex",
+                  "spec": "^2.0.0",
+                  "to": "node_modules/tap/node_modules/treport/node_modules/ansi-regex",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/treport/node_modules/strip-ansi",
+              "name": "strip-ansi",
+              "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-3.0.1.tgz",
+            },
+            "unicode-length" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/treport",
+                  "name": "unicode-length",
+                  "spec": "^2.0.2",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "punycode" => Edge {
+                  "name": "punycode",
+                  "spec": "^2.0.0",
+                  "to": "node_modules/tap/node_modules/punycode",
+                  "type": "prod",
+                },
+                "strip-ansi" => Edge {
+                  "name": "strip-ansi",
+                  "spec": "^3.0.1",
+                  "to": "node_modules/tap/node_modules/treport/node_modules/strip-ansi",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/treport/node_modules/unicode-length",
+              "name": "unicode-length",
+              "resolved": "https://registry.npmjs.org/unicode-length/-/unicode-length-2.0.2.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap",
+              "name": "treport",
+              "spec": "^1.0.1",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "cardinal" => Edge {
+              "name": "cardinal",
+              "spec": "^2.1.1",
+              "to": "node_modules/tap/node_modules/cardinal",
+              "type": "prod",
+            },
+            "chalk" => Edge {
+              "name": "chalk",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/chalk",
+              "type": "prod",
+            },
+            "import-jsx" => Edge {
+              "name": "import-jsx",
+              "spec": "^3.0.0",
+              "to": "node_modules/tap/node_modules/import-jsx",
+              "type": "prod",
+            },
+            "ink" => Edge {
+              "name": "ink",
+              "spec": "^2.5.0",
+              "to": "node_modules/tap/node_modules/ink",
+              "type": "prod",
+            },
+            "ms" => Edge {
+              "name": "ms",
+              "spec": "^2.1.2",
+              "to": "node_modules/tap/node_modules/ms",
+              "type": "prod",
+            },
+            "react" => Edge {
+              "name": "react",
+              "spec": "^16.8.6",
+              "to": "node_modules/react",
+              "type": "peer",
+            },
+            "string-length" => Edge {
+              "name": "string-length",
+              "spec": "^3.1.0",
+              "to": "node_modules/tap/node_modules/string-length",
+              "type": "prod",
+            },
+            "tap-parser" => Edge {
+              "name": "tap-parser",
+              "spec": "^10.0.1",
+              "to": "node_modules/tap/node_modules/tap-parser",
+              "type": "prod",
+            },
+            "unicode-length" => Edge {
+              "name": "unicode-length",
+              "spec": "^2.0.2",
+              "to": "node_modules/tap/node_modules/treport/node_modules/unicode-length",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/treport",
+          "name": "treport",
+          "resolved": "https://registry.npmjs.org/treport/-/treport-1.0.1.tgz",
+        },
+        "type-fest" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ansi-escapes",
+              "name": "type-fest",
+              "spec": "^0.8.1",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/type-fest",
+          "name": "type-fest",
+          "resolved": "https://registry.npmjs.org/type-fest/-/type-fest-0.8.1.tgz",
+        },
+        "widest-line" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "widest-line",
+              "spec": "^3.1.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "string-width" => Edge {
+              "name": "string-width",
+              "spec": "^4.0.0",
+              "to": "node_modules/tap/node_modules/string-width",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/widest-line",
+          "name": "widest-line",
+          "resolved": "https://registry.npmjs.org/widest-line/-/widest-line-3.1.0.tgz",
+        },
+        "wrap-ansi" => Node {
+          "bundled": true,
+          "children": Map {
+            "ansi-styles" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/wrap-ansi",
+                  "name": "ansi-styles",
+                  "spec": "^4.0.0",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "@types/color-name" => Edge {
+                  "name": "@types/color-name",
+                  "spec": "^1.1.1",
+                  "to": "node_modules/tap/node_modules/@types/color-name",
+                  "type": "prod",
+                },
+                "color-convert" => Edge {
+                  "name": "color-convert",
+                  "spec": "^2.0.1",
+                  "to": "node_modules/tap/node_modules/wrap-ansi/node_modules/color-convert",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/wrap-ansi/node_modules/ansi-styles",
+              "name": "ansi-styles",
+              "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.2.0.tgz",
+            },
+            "color-convert" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/wrap-ansi/node_modules/ansi-styles",
+                  "name": "color-convert",
+                  "spec": "^2.0.1",
+                  "type": "prod",
+                },
+              },
+              "edgesOut": Map {
+                "color-name" => Edge {
+                  "name": "color-name",
+                  "spec": "~1.1.4",
+                  "to": "node_modules/tap/node_modules/wrap-ansi/node_modules/color-name",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/wrap-ansi/node_modules/color-convert",
+              "name": "color-convert",
+              "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
+            },
+            "color-name" => Node {
+              "bundled": true,
+              "edgesIn": Set {
+                Edge {
+                  "from": "node_modules/tap/node_modules/wrap-ansi/node_modules/color-convert",
+                  "name": "color-name",
+                  "spec": "~1.1.4",
+                  "type": "prod",
+                },
+              },
+              "location": "node_modules/tap/node_modules/wrap-ansi/node_modules/color-name",
+              "name": "color-name",
+              "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
+            },
+          },
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "wrap-ansi",
+              "spec": "^6.2.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "ansi-styles" => Edge {
+              "name": "ansi-styles",
+              "spec": "^4.0.0",
+              "to": "node_modules/tap/node_modules/wrap-ansi/node_modules/ansi-styles",
+              "type": "prod",
+            },
+            "string-width" => Edge {
+              "name": "string-width",
+              "spec": "^4.1.0",
+              "to": "node_modules/tap/node_modules/string-width",
+              "type": "prod",
+            },
+            "strip-ansi" => Edge {
+              "name": "strip-ansi",
+              "spec": "^6.0.0",
+              "to": "node_modules/tap/node_modules/strip-ansi",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/wrap-ansi",
+          "name": "wrap-ansi",
+          "resolved": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-6.2.0.tgz",
+        },
+        "yaml" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap",
+              "name": "yaml",
+              "spec": "^1.7.2",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/tap-yaml",
+              "name": "yaml",
+              "spec": "^1.5.0",
+              "type": "prod",
+            },
+          },
+          "edgesOut": Map {
+            "@babel/runtime" => Edge {
+              "name": "@babel/runtime",
+              "spec": "^7.6.3",
+              "to": "node_modules/tap/node_modules/@babel/runtime",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/yaml",
+          "name": "yaml",
+          "resolved": "https://registry.npmjs.org/yaml/-/yaml-1.7.2.tgz",
+        },
+        "yoga-layout-prebuilt" => Node {
+          "bundled": true,
+          "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "yoga-layout-prebuilt",
+              "spec": "^1.9.3",
+              "type": "prod",
+            },
+          },
+          "location": "node_modules/tap/node_modules/yoga-layout-prebuilt",
+          "name": "yoga-layout-prebuilt",
+          "resolved": "https://registry.npmjs.org/yoga-layout-prebuilt/-/yoga-layout-prebuilt-1.9.3.tgz",
+        },
+      },
       "edgesIn": Set {
         Edge {
           "from": "",
@@ -31348,7 +34599,7 @@ Node {
         "@types/react" => Edge {
           "name": "@types/react",
           "spec": "^16.9.16",
-          "to": "node_modules/@types/react",
+          "to": "node_modules/tap/node_modules/@types/react",
           "type": "prod",
         },
         "async-hook-domain" => Edge {
@@ -31438,13 +34689,13 @@ Node {
         "import-jsx" => Edge {
           "name": "import-jsx",
           "spec": "^3.0.0",
-          "to": "node_modules/import-jsx",
+          "to": "node_modules/tap/node_modules/import-jsx",
           "type": "prod",
         },
         "ink" => Edge {
           "name": "ink",
           "spec": "^2.5.0",
-          "to": "node_modules/ink",
+          "to": "node_modules/tap/node_modules/ink",
           "type": "prod",
         },
         "isexe" => Edge {
@@ -31468,7 +34719,7 @@ Node {
         "minipass" => Edge {
           "name": "minipass",
           "spec": "^3.1.1",
-          "to": "node_modules/minipass",
+          "to": "node_modules/tap/node_modules/minipass",
           "type": "prod",
         },
         "mkdirp" => Edge {
@@ -31516,7 +34767,7 @@ Node {
         "signal-exit" => Edge {
           "name": "signal-exit",
           "spec": "^3.0.0",
-          "to": "node_modules/signal-exit",
+          "to": "node_modules/tap/node_modules/signal-exit",
           "type": "prod",
         },
         "source-map-support" => Edge {
@@ -31540,13 +34791,13 @@ Node {
         "tap-parser" => Edge {
           "name": "tap-parser",
           "spec": "^10.0.1",
-          "to": "node_modules/tap-parser",
+          "to": "node_modules/tap/node_modules/tap-parser",
           "type": "prod",
         },
         "tap-yaml" => Edge {
           "name": "tap-yaml",
           "spec": "^1.0.0",
-          "to": "node_modules/tap-yaml",
+          "to": "node_modules/tap/node_modules/tap-yaml",
           "type": "prod",
         },
         "tcompare" => Edge {
@@ -31556,10 +34807,9 @@ Node {
           "type": "prod",
         },
         "treport" => Edge {
-          "error": "MISSING",
           "name": "treport",
           "spec": "^1.0.1",
-          "to": null,
+          "to": "node_modules/tap/node_modules/treport",
           "type": "prod",
         },
         "trivial-deferred" => Edge {
@@ -31595,7 +34845,7 @@ Node {
         "yaml" => Edge {
           "name": "yaml",
           "spec": "^1.7.2",
-          "to": "node_modules/yaml",
+          "to": "node_modules/tap/node_modules/yaml",
           "type": "prod",
         },
         "yapool" => Edge {
@@ -31730,12 +34980,6 @@ Node {
     "tap-parser" => Node {
       "edgesIn": Set {
         Edge {
-          "from": "node_modules/tap",
-          "name": "tap-parser",
-          "spec": "^10.0.1",
-          "type": "prod",
-        },
-        Edge {
           "from": "node_modules/tap-mocha-reporter",
           "name": "tap-parser",
           "spec": "^10.0.0",
@@ -31768,12 +35012,6 @@ Node {
     },
     "tap-yaml" => Node {
       "edgesIn": Set {
-        Edge {
-          "from": "node_modules/tap",
-          "name": "tap-yaml",
-          "spec": "^1.0.0",
-          "type": "prod",
-        },
         Edge {
           "from": "node_modules/tap-mocha-reporter",
           "name": "tap-yaml",
@@ -32498,12 +35736,6 @@ Node {
     "yaml" => Node {
       "edgesIn": Set {
         Edge {
-          "from": "node_modules/tap",
-          "name": "yaml",
-          "spec": "^1.7.2",
-          "type": "prod",
-        },
-        Edge {
           "from": "node_modules/tap-yaml",
           "name": "yaml",
           "spec": "^1.5.0",
@@ -32891,12 +36123,12 @@ Node {
     },
   },
   "location": "",
-  "name": "tap-and-flow",
+  "name": "reify-update-tap-and-flow-update-everything",
   "resolved": null,
 }
 `
 
-exports[`test/arborist/build-ideal-tree.js TAP update tap and flow > update ink 1`] = `
+exports[`test/arborist/reify.js TAP update tap and flow update ink only > expect resolving Promise 1`] = `
 Node {
   "children": Map {
     "@babel/code-frame" => Node {
@@ -38474,6 +41706,24 @@ Node {
           "spec": "^16.12.0",
           "type": "prod",
         },
+        Edge {
+          "from": "node_modules/tap/node_modules/ink",
+          "name": "react",
+          "spec": ">=16.8.0",
+          "type": "peer",
+        },
+        Edge {
+          "from": "node_modules/tap/node_modules/react-reconciler",
+          "name": "react",
+          "spec": "^16.0.0",
+          "type": "peer",
+        },
+        Edge {
+          "from": "node_modules/tap/node_modules/treport",
+          "name": "react",
+          "spec": "^16.8.6",
+          "type": "peer",
+        },
       },
       "edgesOut": Map {
         "loose-envify" => Edge {
@@ -39859,7 +43109,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/code-frame",
           "name": "@babel/code-frame",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.5.5.tgz",
         },
         "@babel/core" => Node {
           "bundled": true,
@@ -39876,10 +43126,40 @@ Node {
               },
               "location": "node_modules/tap/node_modules/@babel/core/node_modules/source-map",
               "name": "source-map",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
             },
           },
           "edgesIn": Set {
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-proposal-object-rest-spread",
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "type": "peer",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-syntax-jsx",
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "type": "peer",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-syntax-object-rest-spread",
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "type": "peer",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-transform-destructuring",
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "type": "peer",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/@babel/plugin-transform-react-jsx",
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "type": "peer",
+            },
             Edge {
               "from": "node_modules/tap/node_modules/import-jsx",
               "name": "@babel/core",
@@ -39975,7 +43255,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/core",
           "name": "@babel/core",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.7.5.tgz",
         },
         "@babel/generator" => Node {
           "bundled": true,
@@ -39992,7 +43272,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/@babel/generator/node_modules/source-map",
               "name": "source-map",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
             },
           },
           "edgesIn": Set {
@@ -40037,7 +43317,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/generator",
           "name": "@babel/generator",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/generator/-/generator-7.7.4.tgz",
         },
         "@babel/helper-builder-react-jsx" => Node {
           "bundled": true,
@@ -40065,7 +43345,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/helper-builder-react-jsx",
           "name": "@babel/helper-builder-react-jsx",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/helper-builder-react-jsx/-/helper-builder-react-jsx-7.7.4.tgz",
         },
         "@babel/helper-function-name" => Node {
           "bundled": true,
@@ -40099,7 +43379,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/helper-function-name",
           "name": "@babel/helper-function-name",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/helper-function-name/-/helper-function-name-7.7.4.tgz",
         },
         "@babel/helper-get-function-arity" => Node {
           "bundled": true,
@@ -40121,7 +43401,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/helper-get-function-arity",
           "name": "@babel/helper-get-function-arity",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/helper-get-function-arity/-/helper-get-function-arity-7.7.4.tgz",
         },
         "@babel/helper-plugin-utils" => Node {
           "bundled": true,
@@ -40159,7 +43439,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/helper-plugin-utils",
           "name": "@babel/helper-plugin-utils",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0.tgz",
         },
         "@babel/helper-split-export-declaration" => Node {
           "bundled": true,
@@ -40181,7 +43461,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/helper-split-export-declaration",
           "name": "@babel/helper-split-export-declaration",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/helper-split-export-declaration/-/helper-split-export-declaration-7.7.4.tgz",
         },
         "@babel/helpers" => Node {
           "bundled": true,
@@ -40215,7 +43495,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/helpers",
           "name": "@babel/helpers",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/helpers/-/helpers-7.7.4.tgz",
         },
         "@babel/highlight" => Node {
           "bundled": true,
@@ -40252,7 +43532,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/@babel/highlight/node_modules/chalk",
               "name": "chalk",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz",
             },
             "supports-color" => Node {
               "bundled": true,
@@ -40274,7 +43554,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/@babel/highlight/node_modules/supports-color",
               "name": "supports-color",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-5.5.0.tgz",
             },
           },
           "edgesIn": Set {
@@ -40307,7 +43587,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/highlight",
           "name": "@babel/highlight",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/highlight/-/highlight-7.5.0.tgz",
         },
         "@babel/parser" => Node {
           "bundled": true,
@@ -40333,7 +43613,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/parser",
           "name": "@babel/parser",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/parser/-/parser-7.7.5.tgz",
         },
         "@babel/plugin-proposal-object-rest-spread" => Node {
           "bundled": true,
@@ -40346,6 +43626,12 @@ Node {
             },
           },
           "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "peer",
+            },
             "@babel/helper-plugin-utils" => Edge {
               "name": "@babel/helper-plugin-utils",
               "spec": "^7.0.0",
@@ -40361,7 +43647,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/plugin-proposal-object-rest-spread",
           "name": "@babel/plugin-proposal-object-rest-spread",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/plugin-proposal-object-rest-spread/-/plugin-proposal-object-rest-spread-7.7.4.tgz",
         },
         "@babel/plugin-syntax-jsx" => Node {
           "bundled": true,
@@ -40374,6 +43660,12 @@ Node {
             },
           },
           "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "peer",
+            },
             "@babel/helper-plugin-utils" => Edge {
               "name": "@babel/helper-plugin-utils",
               "spec": "^7.0.0",
@@ -40383,7 +43675,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/plugin-syntax-jsx",
           "name": "@babel/plugin-syntax-jsx",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-jsx/-/plugin-syntax-jsx-7.7.4.tgz",
         },
         "@babel/plugin-syntax-object-rest-spread" => Node {
           "bundled": true,
@@ -40396,6 +43688,12 @@ Node {
             },
           },
           "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "peer",
+            },
             "@babel/helper-plugin-utils" => Edge {
               "name": "@babel/helper-plugin-utils",
               "spec": "^7.0.0",
@@ -40405,7 +43703,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/plugin-syntax-object-rest-spread",
           "name": "@babel/plugin-syntax-object-rest-spread",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-object-rest-spread/-/plugin-syntax-object-rest-spread-7.7.4.tgz",
         },
         "@babel/plugin-transform-destructuring" => Node {
           "bundled": true,
@@ -40418,6 +43716,12 @@ Node {
             },
           },
           "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "peer",
+            },
             "@babel/helper-plugin-utils" => Edge {
               "name": "@babel/helper-plugin-utils",
               "spec": "^7.0.0",
@@ -40427,7 +43731,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/plugin-transform-destructuring",
           "name": "@babel/plugin-transform-destructuring",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/plugin-transform-destructuring/-/plugin-transform-destructuring-7.7.4.tgz",
         },
         "@babel/plugin-transform-react-jsx" => Node {
           "bundled": true,
@@ -40440,6 +43744,12 @@ Node {
             },
           },
           "edgesOut": Map {
+            "@babel/core" => Edge {
+              "name": "@babel/core",
+              "spec": "^7.0.0-0",
+              "to": "node_modules/tap/node_modules/@babel/core",
+              "type": "peer",
+            },
             "@babel/helper-builder-react-jsx" => Edge {
               "name": "@babel/helper-builder-react-jsx",
               "spec": "^7.7.4",
@@ -40461,7 +43771,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/plugin-transform-react-jsx",
           "name": "@babel/plugin-transform-react-jsx",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/plugin-transform-react-jsx/-/plugin-transform-react-jsx-7.7.4.tgz",
         },
         "@babel/runtime" => Node {
           "bundled": true,
@@ -40483,7 +43793,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/runtime",
           "name": "@babel/runtime",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.7.6.tgz",
         },
         "@babel/template" => Node {
           "bundled": true,
@@ -40529,7 +43839,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/template",
           "name": "@babel/template",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/template/-/template-7.7.4.tgz",
         },
         "@babel/traverse" => Node {
           "bundled": true,
@@ -40605,7 +43915,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/traverse",
           "name": "@babel/traverse",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/traverse/-/traverse-7.7.4.tgz",
         },
         "@babel/types" => Node {
           "bundled": true,
@@ -40687,7 +43997,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@babel/types",
           "name": "@babel/types",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@babel/types/-/types-7.7.4.tgz",
         },
         "@types/color-name" => Node {
           "bundled": true,
@@ -40713,7 +44023,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@types/color-name",
           "name": "@types/color-name",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@types/color-name/-/color-name-1.1.1.tgz",
         },
         "@types/prop-types" => Node {
           "bundled": true,
@@ -40727,7 +44037,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@types/prop-types",
           "name": "@types/prop-types",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.3.tgz",
         },
         "@types/react" => Node {
           "bundled": true,
@@ -40737,6 +44047,18 @@ Node {
               "name": "@types/react",
               "spec": "^16.9.16",
               "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/auto-bind",
+              "name": "@types/react",
+              "spec": ">=16.8.0",
+              "type": "peerOptional",
+            },
+            Edge {
+              "from": "node_modules/tap/node_modules/ink",
+              "name": "@types/react",
+              "spec": ">=16.8.0",
+              "type": "peer",
             },
           },
           "edgesOut": Map {
@@ -40755,7 +44077,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/@types/react",
           "name": "@types/react",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/@types/react/-/react-16.9.16.tgz",
         },
         "ansi-escapes" => Node {
           "bundled": true,
@@ -40777,7 +44099,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/ansi-escapes",
           "name": "ansi-escapes",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-4.3.0.tgz",
         },
         "ansi-regex" => Node {
           "bundled": true,
@@ -40791,11 +44113,17 @@ Node {
           },
           "location": "node_modules/tap/node_modules/ansi-regex",
           "name": "ansi-regex",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.0.tgz",
         },
         "ansi-styles" => Node {
           "bundled": true,
           "edgesIn": Set {
+            Edge {
+              "from": "node_modules/chalk",
+              "name": "ansi-styles",
+              "spec": "^3.2.1",
+              "type": "prod",
+            },
             Edge {
               "from": "node_modules/tap/node_modules/@babel/highlight/node_modules/chalk",
               "name": "ansi-styles",
@@ -40804,6 +44132,12 @@ Node {
             },
             Edge {
               "from": "node_modules/tap/node_modules/log-update/node_modules/wrap-ansi",
+              "name": "ansi-styles",
+              "spec": "^3.2.0",
+              "type": "prod",
+            },
+            Edge {
+              "from": "node_modules/wrap-ansi",
               "name": "ansi-styles",
               "spec": "^3.2.0",
               "type": "prod",
@@ -40819,7 +44153,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/ansi-styles",
           "name": "ansi-styles",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-3.2.1.tgz",
         },
         "ansicolors" => Node {
           "bundled": true,
@@ -40833,7 +44167,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/ansicolors",
           "name": "ansicolors",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/ansicolors/-/ansicolors-0.3.2.tgz",
         },
         "arrify" => Node {
           "bundled": true,
@@ -40847,7 +44181,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/arrify",
           "name": "arrify",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/arrify/-/arrify-2.0.1.tgz",
         },
         "astral-regex" => Node {
           "bundled": true,
@@ -40861,7 +44195,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/astral-regex",
           "name": "astral-regex",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/astral-regex/-/astral-regex-2.0.0.tgz",
         },
         "auto-bind" => Node {
           "bundled": true,
@@ -40873,9 +44207,17 @@ Node {
               "type": "prod",
             },
           },
+          "edgesOut": Map {
+            "@types/react" => Edge {
+              "name": "@types/react",
+              "spec": ">=16.8.0",
+              "to": "node_modules/tap/node_modules/@types/react",
+              "type": "peerOptional",
+            },
+          },
           "location": "node_modules/tap/node_modules/auto-bind",
           "name": "auto-bind",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/auto-bind/-/auto-bind-3.0.0.tgz",
         },
         "caller-callsite" => Node {
           "bundled": true,
@@ -40897,7 +44239,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/caller-callsite",
           "name": "caller-callsite",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/caller-callsite/-/caller-callsite-2.0.0.tgz",
         },
         "caller-path" => Node {
           "bundled": true,
@@ -40919,7 +44261,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/caller-path",
           "name": "caller-path",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/caller-path/-/caller-path-2.0.0.tgz",
         },
         "callsites" => Node {
           "bundled": true,
@@ -40933,7 +44275,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/callsites",
           "name": "callsites",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/callsites/-/callsites-2.0.0.tgz",
         },
         "cardinal" => Node {
           "bundled": true,
@@ -40961,7 +44303,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/cardinal",
           "name": "cardinal",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/cardinal/-/cardinal-2.1.1.tgz",
         },
         "chalk" => Node {
           "bundled": true,
@@ -40992,7 +44334,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/chalk/node_modules/ansi-styles",
               "name": "ansi-styles",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.2.0.tgz",
             },
             "color-convert" => Node {
               "bundled": true,
@@ -41014,7 +44356,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/chalk/node_modules/color-convert",
               "name": "color-convert",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
             },
             "color-name" => Node {
               "bundled": true,
@@ -41028,7 +44370,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/chalk/node_modules/color-name",
               "name": "color-name",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
             },
           },
           "edgesIn": Set {
@@ -41061,7 +44403,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/chalk",
           "name": "chalk",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/chalk/-/chalk-3.0.0.tgz",
         },
         "ci-info" => Node {
           "bundled": true,
@@ -41075,7 +44417,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/ci-info",
           "name": "ci-info",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/ci-info/-/ci-info-2.0.0.tgz",
         },
         "cli-cursor" => Node {
           "bundled": true,
@@ -41097,7 +44439,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/cli-cursor",
           "name": "cli-cursor",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/cli-cursor/-/cli-cursor-3.1.0.tgz",
         },
         "cli-truncate" => Node {
           "bundled": true,
@@ -41125,7 +44467,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/cli-truncate",
           "name": "cli-truncate",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/cli-truncate/-/cli-truncate-2.1.0.tgz",
         },
         "color-convert" => Node {
           "bundled": true,
@@ -41147,7 +44489,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/color-convert",
           "name": "color-convert",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz",
         },
         "color-name" => Node {
           "bundled": true,
@@ -41161,7 +44503,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/color-name",
           "name": "color-name",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.3.tgz",
         },
         "convert-source-map" => Node {
           "bundled": true,
@@ -41178,7 +44520,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/convert-source-map/node_modules/safe-buffer",
               "name": "safe-buffer",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz",
             },
           },
           "edgesIn": Set {
@@ -41199,7 +44541,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/convert-source-map",
           "name": "convert-source-map",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.7.0.tgz",
         },
         "csstype" => Node {
           "bundled": true,
@@ -41213,7 +44555,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/csstype",
           "name": "csstype",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/csstype/-/csstype-2.6.8.tgz",
         },
         "debug" => Node {
           "bundled": true,
@@ -41241,7 +44583,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/debug",
           "name": "debug",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/debug/-/debug-4.1.1.tgz",
         },
         "emoji-regex" => Node {
           "bundled": true,
@@ -41255,11 +44597,17 @@ Node {
           },
           "location": "node_modules/tap/node_modules/emoji-regex",
           "name": "emoji-regex",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz",
         },
         "escape-string-regexp" => Node {
           "bundled": true,
           "edgesIn": Set {
+            Edge {
+              "from": "node_modules/chalk",
+              "name": "escape-string-regexp",
+              "spec": "^1.0.5",
+              "type": "prod",
+            },
             Edge {
               "from": "node_modules/tap/node_modules/@babel/highlight/node_modules/chalk",
               "name": "escape-string-regexp",
@@ -41269,7 +44617,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/escape-string-regexp",
           "name": "escape-string-regexp",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz",
         },
         "esprima" => Node {
           "bundled": true,
@@ -41283,7 +44631,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/esprima",
           "name": "esprima",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/esprima/-/esprima-4.0.1.tgz",
         },
         "esutils" => Node {
           "bundled": true,
@@ -41309,7 +44657,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/esutils",
           "name": "esutils",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz",
         },
         "events-to-array" => Node {
           "bundled": true,
@@ -41323,7 +44671,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/events-to-array",
           "name": "events-to-array",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/events-to-array/-/events-to-array-1.1.2.tgz",
         },
         "globals" => Node {
           "bundled": true,
@@ -41337,11 +44685,17 @@ Node {
           },
           "location": "node_modules/tap/node_modules/globals",
           "name": "globals",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz",
         },
         "has-flag" => Node {
           "bundled": true,
           "edgesIn": Set {
+            Edge {
+              "from": "node_modules/supports-color",
+              "name": "has-flag",
+              "spec": "^3.0.0",
+              "type": "prod",
+            },
             Edge {
               "from": "node_modules/tap/node_modules/@babel/highlight/node_modules/supports-color",
               "name": "has-flag",
@@ -41351,7 +44705,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/has-flag",
           "name": "has-flag",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-3.0.0.tgz",
         },
         "import-jsx" => Node {
           "bundled": true,
@@ -41409,7 +44763,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/import-jsx",
           "name": "import-jsx",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/import-jsx/-/import-jsx-3.0.0.tgz",
         },
         "ink" => Node {
           "bundled": true,
@@ -41428,6 +44782,12 @@ Node {
             },
           },
           "edgesOut": Map {
+            "@types/react" => Edge {
+              "name": "@types/react",
+              "spec": ">=16.8.0",
+              "to": "node_modules/tap/node_modules/@types/react",
+              "type": "peer",
+            },
             "ansi-escapes" => Edge {
               "name": "ansi-escapes",
               "spec": "^4.2.1",
@@ -41488,6 +44848,12 @@ Node {
               "to": "node_modules/tap/node_modules/prop-types",
               "type": "prod",
             },
+            "react" => Edge {
+              "name": "react",
+              "spec": ">=16.8.0",
+              "to": "node_modules/react",
+              "type": "peer",
+            },
             "react-reconciler" => Edge {
               "name": "react-reconciler",
               "spec": "^0.24.0",
@@ -41539,7 +44905,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/ink",
           "name": "ink",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/ink/-/ink-2.6.0.tgz",
         },
         "is-ci" => Node {
           "bundled": true,
@@ -41561,7 +44927,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/is-ci",
           "name": "is-ci",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/is-ci/-/is-ci-2.0.0.tgz",
         },
         "is-fullwidth-code-point" => Node {
           "bundled": true,
@@ -41581,7 +44947,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/is-fullwidth-code-point",
           "name": "is-fullwidth-code-point",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz",
         },
         "js-tokens" => Node {
           "bundled": true,
@@ -41601,7 +44967,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/js-tokens",
           "name": "js-tokens",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz",
         },
         "jsesc" => Node {
           "bundled": true,
@@ -41615,7 +44981,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/jsesc",
           "name": "jsesc",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/jsesc/-/jsesc-2.5.2.tgz",
         },
         "json5" => Node {
           "bundled": true,
@@ -41637,7 +45003,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/json5",
           "name": "json5",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/json5/-/json5-2.1.1.tgz",
         },
         "lodash" => Node {
           "bundled": true,
@@ -41669,7 +45035,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/lodash",
           "name": "lodash",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
         },
         "lodash.throttle" => Node {
           "bundled": true,
@@ -41683,7 +45049,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/lodash.throttle",
           "name": "lodash.throttle",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz",
         },
         "log-update" => Node {
           "bundled": true,
@@ -41700,7 +45066,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/ansi-escapes",
               "name": "ansi-escapes",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-3.2.0.tgz",
             },
             "ansi-regex" => Node {
               "bundled": true,
@@ -41714,7 +45080,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/ansi-regex",
               "name": "ansi-regex",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.0.tgz",
             },
             "cli-cursor" => Node {
               "bundled": true,
@@ -41736,7 +45102,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/cli-cursor",
               "name": "cli-cursor",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/cli-cursor/-/cli-cursor-2.1.0.tgz",
             },
             "emoji-regex" => Node {
               "bundled": true,
@@ -41750,7 +45116,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/emoji-regex",
               "name": "emoji-regex",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-7.0.3.tgz",
             },
             "is-fullwidth-code-point" => Node {
               "bundled": true,
@@ -41764,7 +45130,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/is-fullwidth-code-point",
               "name": "is-fullwidth-code-point",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-2.0.0.tgz",
             },
             "mimic-fn" => Node {
               "bundled": true,
@@ -41778,7 +45144,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/mimic-fn",
               "name": "mimic-fn",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/mimic-fn/-/mimic-fn-1.2.0.tgz",
             },
             "onetime" => Node {
               "bundled": true,
@@ -41800,7 +45166,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/onetime",
               "name": "onetime",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/onetime/-/onetime-2.0.1.tgz",
             },
             "restore-cursor" => Node {
               "bundled": true,
@@ -41828,7 +45194,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/restore-cursor",
               "name": "restore-cursor",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/restore-cursor/-/restore-cursor-2.0.0.tgz",
             },
             "string-width" => Node {
               "bundled": true,
@@ -41862,7 +45228,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/string-width",
               "name": "string-width",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/string-width/-/string-width-3.1.0.tgz",
             },
             "strip-ansi" => Node {
               "bundled": true,
@@ -41890,7 +45256,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/strip-ansi",
               "name": "strip-ansi",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-5.2.0.tgz",
             },
             "wrap-ansi" => Node {
               "bundled": true,
@@ -41924,7 +45290,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/log-update/node_modules/wrap-ansi",
               "name": "wrap-ansi",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-5.1.0.tgz",
             },
           },
           "edgesIn": Set {
@@ -41957,7 +45323,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/log-update",
           "name": "log-update",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/log-update/-/log-update-3.3.0.tgz",
         },
         "loose-envify" => Node {
           "bundled": true,
@@ -41991,7 +45357,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/loose-envify",
           "name": "loose-envify",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz",
         },
         "mimic-fn" => Node {
           "bundled": true,
@@ -42005,7 +45371,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/mimic-fn",
           "name": "mimic-fn",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/mimic-fn/-/mimic-fn-2.1.0.tgz",
         },
         "minimist" => Node {
           "bundled": true,
@@ -42019,7 +45385,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/minimist",
           "name": "minimist",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.0.tgz",
         },
         "minipass" => Node {
           "bundled": true,
@@ -42036,7 +45402,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/minipass/node_modules/yallist",
               "name": "yallist",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz",
             },
           },
           "edgesIn": Set {
@@ -42063,7 +45429,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/minipass",
           "name": "minipass",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/minipass/-/minipass-3.1.1.tgz",
         },
         "ms" => Node {
           "bundled": true,
@@ -42083,7 +45449,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/ms",
           "name": "ms",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz",
         },
         "object-assign" => Node {
           "bundled": true,
@@ -42109,7 +45475,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/object-assign",
           "name": "object-assign",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz",
         },
         "onetime" => Node {
           "bundled": true,
@@ -42131,7 +45497,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/onetime",
           "name": "onetime",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/onetime/-/onetime-5.1.0.tgz",
         },
         "path-parse" => Node {
           "bundled": true,
@@ -42145,7 +45511,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/path-parse",
           "name": "path-parse",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/path-parse/-/path-parse-1.0.6.tgz",
         },
         "prop-types" => Node {
           "bundled": true,
@@ -42185,7 +45551,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/prop-types",
           "name": "prop-types",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz",
         },
         "punycode" => Node {
           "bundled": true,
@@ -42196,10 +45562,16 @@ Node {
               "spec": "^2.0.0",
               "type": "prod",
             },
+            Edge {
+              "from": "node_modules/unicode-length",
+              "name": "punycode",
+              "spec": "^2.0.0",
+              "type": "prod",
+            },
           },
           "location": "node_modules/tap/node_modules/punycode",
           "name": "punycode",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz",
         },
         "react-is" => Node {
           "bundled": true,
@@ -42213,7 +45585,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/react-is",
           "name": "react-is",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/react-is/-/react-is-16.12.0.tgz",
         },
         "react-reconciler" => Node {
           "bundled": true,
@@ -42244,6 +45616,12 @@ Node {
               "to": "node_modules/tap/node_modules/prop-types",
               "type": "prod",
             },
+            "react" => Edge {
+              "name": "react",
+              "spec": "^16.0.0",
+              "to": "node_modules/react",
+              "type": "peer",
+            },
             "scheduler" => Edge {
               "name": "scheduler",
               "spec": "^0.18.0",
@@ -42253,7 +45631,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/react-reconciler",
           "name": "react-reconciler",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/react-reconciler/-/react-reconciler-0.24.0.tgz",
         },
         "redeyed" => Node {
           "bundled": true,
@@ -42275,7 +45653,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/redeyed",
           "name": "redeyed",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/redeyed/-/redeyed-2.1.1.tgz",
         },
         "regenerator-runtime" => Node {
           "bundled": true,
@@ -42289,7 +45667,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/regenerator-runtime",
           "name": "regenerator-runtime",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz",
         },
         "resolve" => Node {
           "bundled": true,
@@ -42311,7 +45689,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/resolve",
           "name": "resolve",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/resolve/-/resolve-1.13.1.tgz",
         },
         "resolve-from" => Node {
           "bundled": true,
@@ -42325,7 +45703,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/resolve-from",
           "name": "resolve-from",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/resolve-from/-/resolve-from-3.0.0.tgz",
         },
         "restore-cursor" => Node {
           "bundled": true,
@@ -42353,7 +45731,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/restore-cursor",
           "name": "restore-cursor",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/restore-cursor/-/restore-cursor-3.1.0.tgz",
         },
         "scheduler" => Node {
           "bundled": true,
@@ -42387,7 +45765,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/scheduler",
           "name": "scheduler",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.18.0.tgz",
         },
         "semver" => Node {
           "bundled": true,
@@ -42401,7 +45779,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/semver",
           "name": "semver",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.1.tgz",
         },
         "signal-exit" => Node {
           "bundled": true,
@@ -42433,7 +45811,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/signal-exit",
           "name": "signal-exit",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.2.tgz",
         },
         "slice-ansi" => Node {
           "bundled": true,
@@ -42464,7 +45842,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/slice-ansi/node_modules/ansi-styles",
               "name": "ansi-styles",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.2.0.tgz",
             },
             "color-convert" => Node {
               "bundled": true,
@@ -42486,7 +45864,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/slice-ansi/node_modules/color-convert",
               "name": "color-convert",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
             },
             "color-name" => Node {
               "bundled": true,
@@ -42500,7 +45878,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/slice-ansi/node_modules/color-name",
               "name": "color-name",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
             },
           },
           "edgesIn": Set {
@@ -42539,7 +45917,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/slice-ansi",
           "name": "slice-ansi",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/slice-ansi/-/slice-ansi-3.0.0.tgz",
         },
         "string-length" => Node {
           "bundled": true,
@@ -42556,7 +45934,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/string-length/node_modules/ansi-regex",
               "name": "ansi-regex",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.0.tgz",
             },
             "astral-regex" => Node {
               "bundled": true,
@@ -42570,7 +45948,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/string-length/node_modules/astral-regex",
               "name": "astral-regex",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/astral-regex/-/astral-regex-1.0.0.tgz",
             },
             "strip-ansi" => Node {
               "bundled": true,
@@ -42592,7 +45970,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/string-length/node_modules/strip-ansi",
               "name": "strip-ansi",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-5.2.0.tgz",
             },
           },
           "edgesIn": Set {
@@ -42625,7 +46003,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/string-length",
           "name": "string-length",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/string-length/-/string-length-3.1.0.tgz",
         },
         "string-width" => Node {
           "bundled": true,
@@ -42671,7 +46049,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/string-width",
           "name": "string-width",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/string-width/-/string-width-4.2.0.tgz",
         },
         "strip-ansi" => Node {
           "bundled": true,
@@ -42699,7 +46077,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/strip-ansi",
           "name": "strip-ansi",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.0.tgz",
         },
         "supports-color" => Node {
           "bundled": true,
@@ -42716,7 +46094,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/supports-color/node_modules/has-flag",
               "name": "has-flag",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz",
             },
           },
           "edgesIn": Set {
@@ -42737,7 +46115,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/supports-color",
           "name": "supports-color",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-7.1.0.tgz",
         },
         "tap-parser" => Node {
           "bundled": true,
@@ -42777,7 +46155,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/tap-parser",
           "name": "tap-parser",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/tap-parser/-/tap-parser-10.0.1.tgz",
         },
         "tap-yaml" => Node {
           "bundled": true,
@@ -42805,7 +46183,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/tap-yaml",
           "name": "tap-yaml",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/tap-yaml/-/tap-yaml-1.0.0.tgz",
         },
         "to-fast-properties" => Node {
           "bundled": true,
@@ -42819,7 +46197,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/to-fast-properties",
           "name": "to-fast-properties",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/to-fast-properties/-/to-fast-properties-2.0.0.tgz",
         },
         "treport" => Node {
           "bundled": true,
@@ -42836,7 +46214,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/treport/node_modules/ansi-regex",
               "name": "ansi-regex",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-2.1.1.tgz",
             },
             "strip-ansi" => Node {
               "bundled": true,
@@ -42858,7 +46236,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/treport/node_modules/strip-ansi",
               "name": "strip-ansi",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-3.0.1.tgz",
             },
             "unicode-length" => Node {
               "bundled": true,
@@ -42886,7 +46264,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/treport/node_modules/unicode-length",
               "name": "unicode-length",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/unicode-length/-/unicode-length-2.0.2.tgz",
             },
           },
           "edgesIn": Set {
@@ -42928,6 +46306,12 @@ Node {
               "to": "node_modules/tap/node_modules/ms",
               "type": "prod",
             },
+            "react" => Edge {
+              "name": "react",
+              "spec": "^16.8.6",
+              "to": "node_modules/react",
+              "type": "peer",
+            },
             "string-length" => Edge {
               "name": "string-length",
               "spec": "^3.1.0",
@@ -42949,7 +46333,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/treport",
           "name": "treport",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/treport/-/treport-1.0.1.tgz",
         },
         "type-fest" => Node {
           "bundled": true,
@@ -42963,7 +46347,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/type-fest",
           "name": "type-fest",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/type-fest/-/type-fest-0.8.1.tgz",
         },
         "widest-line" => Node {
           "bundled": true,
@@ -42985,7 +46369,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/widest-line",
           "name": "widest-line",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/widest-line/-/widest-line-3.1.0.tgz",
         },
         "wrap-ansi" => Node {
           "bundled": true,
@@ -43016,7 +46400,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/wrap-ansi/node_modules/ansi-styles",
               "name": "ansi-styles",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.2.0.tgz",
             },
             "color-convert" => Node {
               "bundled": true,
@@ -43038,7 +46422,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/wrap-ansi/node_modules/color-convert",
               "name": "color-convert",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
             },
             "color-name" => Node {
               "bundled": true,
@@ -43052,7 +46436,7 @@ Node {
               },
               "location": "node_modules/tap/node_modules/wrap-ansi/node_modules/color-name",
               "name": "color-name",
-              "resolved": null,
+              "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
             },
           },
           "edgesIn": Set {
@@ -43085,7 +46469,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/wrap-ansi",
           "name": "wrap-ansi",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-6.2.0.tgz",
         },
         "yaml" => Node {
           "bundled": true,
@@ -43113,7 +46497,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/yaml",
           "name": "yaml",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/yaml/-/yaml-1.7.2.tgz",
         },
         "yoga-layout-prebuilt" => Node {
           "bundled": true,
@@ -43127,7 +46511,7 @@ Node {
           },
           "location": "node_modules/tap/node_modules/yoga-layout-prebuilt",
           "name": "yoga-layout-prebuilt",
-          "resolved": null,
+          "resolved": "https://registry.npmjs.org/yoga-layout-prebuilt/-/yoga-layout-prebuilt-1.9.3.tgz",
         },
       },
       "edgesIn": Set {
@@ -44719,7 +48103,7 @@ Node {
     },
   },
   "location": "",
-  "name": "tap-and-flow",
+  "name": "reify-update-tap-and-flow-update-ink-only",
   "resolved": null,
 }
 `
